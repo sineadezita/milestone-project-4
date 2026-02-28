@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Articles - Atelier Zero ONe{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Articles</h1>
+    {% for article in articles %}
+    <div>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.excerpt }}</p>
+        <a href="{% url 'articles:article_detail' article.slug %}">Read more</a>
+    </div>
+    {% empty %}
+        <p>No articles yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
