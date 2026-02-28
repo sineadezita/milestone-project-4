@@ -1,0 +1,29 @@
+{% load static %}
+
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-top">
+            <!-- Brand -->
+            <a href="{% url 'home' %}" class="brand">
+                <strong>Atelier</strong>Zero One
+            </a>
+
+            <!-- Centre date and tagline -->
+            <div class="masthead-centre d-none d-md-block">
+                <span class="masthead-data" id="masthead-date"></span>
+                <p class="masthead-tagline">Fashion Technology Across Europe</p>
+            </div>
+
+            <!-- Auth buttons -->
+            <div class="masthead-actions">
+                {% if user.is_authentucated %}
+                    <a href="{% url 'account_logout' %}" class="btn-dark-custom">Log Out</a>
+                {% else %}
+                <a href="{% url 'account_login' %}" class="btn-dark-custom">Log In</a>
+                <a href="{% url 'account_signup' %}" class="btn-dark-custom">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>
+
