@@ -1,0 +1,58 @@
+{% load static %}
+
+<footer>
+    <div class="container">
+        <div class="row">
+
+            <!-- Brand -->
+            <div class="col-md-3">
+                <div class="footer-brand"><strong>Atelier</strong>Zero One</div>
+                <p class="footer-tagline">Fashion technology journalism across Europe</p>
+            </div>
+        </div>
+
+        <!-- Navigate -->
+        <div class="col-md-2">
+            <div class="footer-col-title">Navigate</div>
+            <ul class="footer-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="col-md-3">
+            <div class="footer-col-title">Categories</div>
+            <ul class="footer-links">
+                <li><a href="#">#</a></li>
+                <li><a href="#">#</a></li>
+                <li><a href="#">#</a></li>
+                <li><a href="#">#</a></li>
+            </ul>
+        </div>
+
+        <!-- Account -->
+        <div class="col-md-2">
+            <div class="footer-col-title">Account</div>
+            <ul class="footer-links">
+                {% if user.is_authenticated %}
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_signup' %}">Register</a></li>
+                    <li><a href="{% url 'account_login' %}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+        
+
+        <!-- Bottom bar -->
+        <div class="footer-bottom">
+            &copy; 2026 Atelier Zero One. All rights reserved.
+        </div>
+
+    </div>
+</footer>
