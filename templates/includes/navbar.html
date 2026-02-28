@@ -24,6 +24,30 @@
                 {% endif %}
             </div>
         </div>
+        <!-- Primary navigation -->
+        <nav class="primary-nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+
+            <!-- Search form -->
+            <div class="nav-right">
+                <form method="GET" action="#" class="nav-search" role="search">
+                    <input
+                        type="text"
+                        name="q"
+                        placeholder="Search articles &amp; events..."
+                        aria-label="Search"
+                    >
+                    <button type="submit" class="search-btn" aria-label="Submit search">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </nav>
     </div>
 </header>
 
