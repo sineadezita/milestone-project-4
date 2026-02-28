@@ -1,0 +1,18 @@
+{% load static %}
+
+<div class="user-bar d-none d-md-block">
+    <div class="container user-bar-inner">
+        
+        <!-- Greeting -->
+        <span>Welcome back, <strong>{{ user.username }}</strong></span>
+
+        <!-- Links -->
+        <a href="#">My Reading List</a>
+        <a href="#">Saved Events</a>
+        <a href="#">Profile</a>
+
+        <!-- Logout -->
+        <a href="{% url 'account_logout' %}">Log Out</a>
+         
+    </div>
+</div>
