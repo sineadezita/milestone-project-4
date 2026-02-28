@@ -34,7 +34,7 @@
     {% include 'includes/navbar.html' %}
 
     <!-- Django messages - success/error feedback -->
-     {% if messages %}
+    {% if messages %}
         {% for message in messages %}
             <div class="flash-bar {{ message.tags }}">
                 <div class="container">{{ message }}</div>
