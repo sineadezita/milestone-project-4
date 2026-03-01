@@ -13,6 +13,9 @@ class UserProfile(models.Model):
     saved_articles = models.ManyToManyField(
         'articles.Article', blank=True, related_name='saved_by'
     )
+    saved_events = models.ManyToManyField(
+        'events.Event', blank=True, related_name='saved_by'
+    )
     
     def __str__(self):
         return f'{self.user.username} Profile'
