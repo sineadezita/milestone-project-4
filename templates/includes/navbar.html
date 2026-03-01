@@ -10,13 +10,13 @@
 
             <!-- Centre date and tagline -->
             <div class="masthead-centre d-none d-md-block">
-                <span class="masthead-data" id="masthead-date"></span>
+                <span class="masthead-date" id="masthead-date"></span>
                 <p class="masthead-tagline">Fashion Technology Across Europe</p>
             </div>
-
+        
             <!-- Auth buttons -->
             <div class="masthead-actions">
-                {% if user.is_authentucated %}
+                {% if user.is_authenticated %}
                     <a href="{% url 'account_logout' %}" class="btn-dark-custom">Log Out</a>
                 {% else %}
                 <a href="{% url 'account_login' %}" class="btn-dark-custom">Log In</a>

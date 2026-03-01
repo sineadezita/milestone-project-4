@@ -149,6 +149,42 @@ main {
     color: var(--black);
 }
 
+/* Ticker */
+.ticker {
+    background: var(--black);
+    padding: 9px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-track {
+    display: inline-flex;
+    animation: ticker 40s linear infinite;
+}
+
+.ticker-track:hover {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    font-size: 10.5px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--grey-400);
+    padding: 0 48px;
+    border-right: 1px solid #2a2a2a;
+}
+
+.ticker-item strong {
+    color: var(--white);
+    margin-right: 10px;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
 /* Buttons */
 .btn-outline-dark-custom {
     font-size: 11px;
