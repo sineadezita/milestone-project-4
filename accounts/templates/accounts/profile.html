@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Profile | Atelier Zero One{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>My Profile</h1>
+    <p>Username: {{ profile.user.username }}</p>
+    <p>Email: {{ profile.user.email }}</p>
+    <a href="{% url 'accounts:reading_list' %}" class="btn-dark-custome">
+        My Reading List
+    </a>
+</div>
+{% endblock %}
