@@ -210,7 +210,7 @@ main {
 
 .btn-dark-custom {
     font-size: 11px;
-    letter-spacing: 1.5;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     padding: 8px 18px;
     border: 1px solid var(--black);
@@ -231,7 +231,7 @@ main {
 
 .btn-premium-nav {
     font-size: 11px;
-    letter-spacing: 1.5;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     padding: 8px 18px;
     border: 1px solid var(--gold);
@@ -252,6 +252,10 @@ main {
 
 /* Footer */
 footer {
+    background: pink;
+}
+
+footer {
     background: var(--grey-50);
     border-top: 3px solid var(--black);
     padding: 56px 0 0;
@@ -261,7 +265,7 @@ footer {
     font-size: 16px;
     font-weight: 200;
     letter-spacing: 4px;
-    text-decoration: uppercase;
+    text-transform: uppercase;
     color: var(--black);
     margin-top: 10px;
 }
