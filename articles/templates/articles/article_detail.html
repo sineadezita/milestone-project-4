@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ article.title }} Atelier Zero One{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
+
+            <!-- Article header -->
+            <div class="article-header">
+                <p class="card-cat">{{ article.category }}</p>
+                <h1>{{ article.title }}</h1>
+                <div class="article-meta">
+                    <span>{{ article.author }}</span>
+                    <span>{{ article.published_at|date:"d M Y" }}</span>
+                </div>
+            </div>
+
+            <!-- Premium lock -->
+            {% if article.is_premium and not user.subscription.status == 'active' %}
+                <div class="premium-lock">
+                    <i class="bi bi-lock-fill"></i>
+                    <p>This is premium content. Subscribe to read in full.</p>
+                    <a href="#" class="btn-gold">Subscribe Now</a>
+                </div> 
+            {% else %}
+            <!-- AArticle body -->
+            <div class="article-body">
+                {{ article.body|linebreaks }}
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
