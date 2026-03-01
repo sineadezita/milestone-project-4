@@ -15,6 +15,17 @@
                 <p>{{ event.location }}, {{ event.country }}</p>
                 <p>{{ event.description }}</p>
                 <a href="{% url 'events:event_detail' event.slug %}">View Details</a>
+
+                <!-- Save butotn -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:save_event' event.id %}" class="btn-outline-dark-custom mt-2">
+                        {% if event in user.profile.saved_events.all %}
+                            <i class="bi bi-bookmark-fill"></i> Saved 
+                        {% else %}
+                            <i class="bi bi-bookmark"></i> Save Event
+                        {% endif %}
+                    </a>
+                {% endif %}
             </div>
         </div>
     {% empty %}
