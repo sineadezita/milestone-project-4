@@ -314,3 +314,42 @@ footer {
     color: var(--grey-400);
     letter-spacing: 0.5px;
 }
+
+/* User Bar */
+.user-bar {
+    background: var(--grey-50);
+    border-bottom: 1px solid var(--border);
+    padding: 7px 0;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--grey-600);
+}
+
+.user-bar-inner {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-bar a {
+    color: var(--grey-600);
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.user-status-dot {
+    width: 6px;
+    height: 6px;
+    background: #4caf78;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.premium-status {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
