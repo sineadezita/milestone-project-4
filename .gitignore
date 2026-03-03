@@ -1,4 +1,4 @@
-.env.py
+env.py
 
 # Database
 *.sqlite3
@@ -18,11 +18,11 @@ ENV/
 *.log
 local_settings.py
 media/
-saticfiles/
+staticfiles/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-.DS_Storeenv.py
+.DS_Store
