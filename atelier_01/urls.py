@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('articles.urls', namespace='articles')),
     path('user/', include('accounts.urls', namespace='accounts')),
     path('', include('events.urls', namespace='events')),
+    path('comments/', include('comments.urls', namespace='comments')),
 ]
