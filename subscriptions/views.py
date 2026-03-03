@@ -1,3 +1,6 @@
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 import stripe
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -42,7 +45,7 @@ def create_checkout_session(request):
         )
         return redirect(checkout_session.url)
     except Exception as e:
-        messages.error(request, f'Soemthing went wrong: {str(e)}')
+        messages.error(request, f'Something went wrong: {str(e)}')
         return redirect('subscriptions:subscription_page')
     
 
@@ -58,5 +61,44 @@ def subscription_success(request):
 @login_required
 def subscription_cancel(request):
     """ Manage cancelled subscription """
-    messages.info(request, 'Subscrpition cancelled.')
+    messages.info(request, 'Subscription cancelled.')
     return render(request, 'subscriptions/cancel.html')
+
+
+
+@csrf_exempt
+def webhook(request):
+    """ Manage Stripe webhook events """
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    webhook_secret = settings.STRIPE_WEBHOOK_SECRET
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, webhook_secret
+        )
+    except ValueError:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)
+    
+    # Manage subscription activated
+    if event['type'] == 'customer.subscription.created':
+        subscription_data = event['data']['object']
+        customer_id = subscription_data['customer']
+
+        try:
+            customer = stripe.Customer.retrieve(customer_id)
+            user = User.objects.get(email=customer['email'])
+            Subscription.objects.update_or_create(
+                user=user,
+                defaults={
+                    'stripe_customer_id': customer_id,
+                    'stripe_subscription_id': subscription_data['id'],
+                    'status': 'active',
+                }
+            )
+        except User.DoesNotExist:
+            pass
+
+    return HttpResponse(status=200)

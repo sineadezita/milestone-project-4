@@ -1,0 +1,12 @@
+{% extends "base.html %}
+{% load static %}
+
+{% block title %}Subscription Cancelled | Atelier Zero One{% endblock %}
+
+{% block content %}
+<div class="container mt-4 text-center">
+    <h1>Subscription Cancelled</h1>
+    <p>No charge was made.</p>
+    <a href="{% url 'subscriptions:subscription_page' %}" class="btn-dark-custom">Try Again</a>
+</div>
+{% endblock %}

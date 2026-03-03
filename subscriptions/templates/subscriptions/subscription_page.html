@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Go Premium | Atelier Zero One{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Atelier Zero One Premium</h1>
+
+            {% if subscription and subscription.status == 'active' %}
+                <p>You are already a premium member.</p>
+            {% else %}
+                <p>Get unlimited access to all premium articles.</p>
+                <ul>
+                    <li>Full access to premium articles</li>
+                    <li>Early access to new content</li>
+                    <li>Support independent journalism</li>
+                </ul>
+                <a href="{% url 'subscriptions:checkout' %}" class="btn-dark-custom">
+                    Subscribe Now for €9.98/month
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
