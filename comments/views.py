@@ -64,4 +64,4 @@ def delete_comment(request, comment_id):
         messages.success(request, 'Comment deleted')
         return redirect('articles:article_detail', slug=article_slug)
     
-    return render(request, 'comments/delete_commen.html', {'comment': comment})
+    return render(request, 'comments/delete_comment.html', {'comment': comment})

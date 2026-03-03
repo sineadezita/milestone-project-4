@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Edit Comment | Atelier Zero One{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Edit Comment</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="body">Comment</label>
+            <textarea name="body" id="body" rows="4" class="form-control">{{ comment.body }}</textarea>
+        </div>
+        <button type="submit" class="btn-dark-custom">Save Changes</button>
+        <a href="{$ url 'articles:article_detail' comment.article.slug %}" class="btn-outline-dark-custome">Cancel</a>
+    </form>
+</div>
+{% endblock %}

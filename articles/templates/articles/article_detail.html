@@ -25,11 +25,49 @@
                     <a href="#" class="btn-gold">Subscribe Now</a>
                 </div> 
             {% else %}
-            <!-- AArticle body -->
+            <!-- Article body -->
             <div class="article-body">
                 {{ article.body|linebreaks }}
             </div>
-            {% endif %}
+        {% endif %}
+        
+        <!-- Comments section -->
+        <div class="comments-section mt-4">
+            <h3>Comments</h3>
+
+            <!-- Existing comments -->
+            {% for comment in article.comments.all %}
+                {% if comment.is_approved %}
+                    <div class="comment">
+                        <strong>{{ comment.author }}</strong>
+                        <span>{{ comment.created_at|date:"d M Y" }}</span>
+                        <p>{{ comment.body }}</p>
+
+                        <!-- Edit and delete (only shown to comment author) -->
+                        {% if user == comment.author %}
+                            <a href="{% url 'comments:edit_comment' comment.id %}">Edit</a>
+                            <a href="{% url 'comments:delete_comment' comment.id %}">Delete</a>
+                        {% endif %}
+                    </div> 
+                {% endif %}
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+
+            <!-- Add comment form (only shown to logged in users) -->
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'comments:add_comment' article.id %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="body">Leave a comment</label>
+                        <textarea name="body" id="body" rows="4" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn-dark-custom">Submit Comment</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'account_login' %}">Log in</a> to leave a comment.</p>
+            {% endif %}  
+        </div> 
 
         </div>
     </div>
