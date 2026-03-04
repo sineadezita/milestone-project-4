@@ -250,6 +250,25 @@ main {
     color: var(--white);
 }
 
+/* Buttons form submit */
+button.btn-dark-custom {
+    border-radius: 0;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid var(--black);
+    background: var(--black);
+    color: var(--white);
+    transition: opacity 0.2s;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button.btn-dark.custom:hover {
+    opacity: 0.75;
+}
+
 /* Footer */
 footer {
     background: pink;
