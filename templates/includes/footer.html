@@ -16,8 +16,8 @@
             <div class="footer-col-title">Navigate</div>
             <ul class="footer-links">
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">Events</a></li>
+                <li><a href="{% url 'articles:article_list' %}">Articles</a></li>
+                <li><a href="{% url 'events:event_list' %}">Events</a></li>
                 <li><a href="#">About</a></li>
             </ul>
         </div>
@@ -26,10 +26,10 @@
         <div class="col-md-3 mb-4">
             <div class="footer-col-title">Categories</div>
             <ul class="footer-links">
-                <li><a href="#">#</a></li>
-                <li><a href="#">#</a></li>
-                <li><a href="#">#</a></li>
-                <li><a href="#">#</a></li>
+                <li><a href="#">AI & Machine Learning</a></li>
+                <li><a href="#">Wearable Technology</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Digital Fashion</a></li>
             </ul>
         </div>
 
@@ -37,6 +37,7 @@
         <div class="col-md-2 mb-4">
             <div class="footer-col-title">Account</div>
             <ul class="footer-links">
+                <li><a href="{% url 'subscriptions:subscription_page' %}">Go Premium</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="#">Profile</a></li>
                     <li><a href="{% url 'account_logout' %}">Log Out</a></li>

@@ -7,9 +7,9 @@
         <span>Welcome back, <strong>{{ user.username }}</strong></span>
 
         <!-- Links -->
-        <a href="#">My Reading List</a>
-        <a href="#">Saved Events</a>
-        <a href="#">Profile</a>
+        <a href="{% url 'accounts:reading_list' %}">My Reading List</a>
+        <a href="{% url 'accounts:saved_events' %}">Saved Events</a>
+        <a href="{% url 'accounts:profile' %}">Profile</a>
 
         <!-- Logout -->
         <a href="{% url 'account_logout' %}">Log Out</a>
