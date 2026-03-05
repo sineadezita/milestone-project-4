@@ -82,6 +82,37 @@ def webhook(request):
     except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
     
+    # Handle subscription activated
+    if event['type'] == 'customer.subscription.created':
+        subscription_data = event['data']['object']
+        customer_id = subscription_data['customer']
+        try:
+            customer = stripe.Customer.retrieve(customer_id)
+            user = User.objects.get(email=customer['email'])
+            Subscription.objects.update_or_create(
+                user=user,
+                defaults={
+                    'stripe_customer_id': customer_id,
+                    'stripe_subscription_id': subscription_data['id'],
+                    'status': 'active'
+                }
+            ) 
+        except User.DoesNotExist:
+            pass
+    
+    # Handle subscription cancelled
+    elif event['type'] in ['customer.subscription.aborted', 'customer.subscription.deleted']:
+        subscription_data = event['data']['object']
+        customer_id = subscription_data['customer']
+        try:
+            customer = stripe.Customer.retrieve(customer_id)
+            user = User.objects.get(email=customer['email'])
+            Subscription.objects.filter(user=user).update(status='cancelled')
+        except User.DoesNotExist:
+            pass
+
+    return HttpResponse(status=200)
+
     # Manage subscription activated
     if event['type'] == 'customer.subscription.created':
         subscription_data = event['data']['object']
