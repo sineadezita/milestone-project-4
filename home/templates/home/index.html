@@ -1,8 +1,162 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Atelier Zero One | Fashion Technology{% endblock %}
+
 {% block content %}
-<div class="container">
-    <h1>Atelier Zero One</h1>
-</div>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="section-label-row">
+            <span class="section-label">Featured</span>
+            <span class="section-rule"></span>
+        </div>
+        <div class="hero-grid">
+            {% if featured_articles %}
+            {% with article=featured_articles.0 %}
+            <div class="hero-main">
+                {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="hero-img">
+                {% else %}
+                    <div class="hero-img">Featured Image</div>
+                {% endif %}
+                <div>
+                    <div class="hero-kicker">{{ article.category }}</div>
+                    <h1 class="hero-title">
+                        <a href="{% url 'articles:article_detail' article.slug %}">{{ article.title }}</a>
+                    </h1>
+                </div>
+                <p class="hero-excerpt">{{ article.excerpt }}</p>
+                <div class="hero-footer">
+                    <div class="hero-meta">
+                        <span class="author">{{ article.author }}</span>
+                        <span class="dot"></span>
+                        <span>{{ article.created_at|date:"d M Y" }}</span>
+                    </div>
+                    <a href="{% url 'articles:article_detail' article.slug %}" class="read-link">Read Article</a>
+                </div>
+            </div>
+            {% endwith %}
+            {% endif %}
+
+            <div class="hero-sidebar">
+                <div class="sidebar-hd">Latest Articles</div>
+                {% for article in featured_articles|slice:"1:4" %}
+                <div class="sidebar-item">
+                    {% if article.image %}
+                        <img src="{{ article.image.url }}" alt="{{ article.title }}" class="sidebar-thumb">
+                    {% else %}
+                        <div class="sidebar-thumb"></div>
+                    {% endif %}
+                    <div class="sidebar-body">
+                        <div class="sidebar-cat">{{ article.category }}</div>
+                        <div class="sidebar-title">
+                            <a href="{% url 'articles:article_detail' article.slug %}">{{ article.title }}</a>
+                        </div>
+                        <div class="sidebar-date">{{ article.created_at|date:"d M Y" }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if not request.user.is_authenticated %}
+                <div class="premium-box">
+                    <div class="premium-box-label">★ Premium Access</div>
+                    <div class="premium-box-title">Fashion's Future Deserves Deeper Reading</div>
+                    <p class="premium-box-text">Unlimited access to premium articles and in-depth analysis — €9.99/month.</p>
+                    <a href="{% url 'subscriptions:subscription_page' %}" class="btn-gold">Go Premium</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles Grid -->
+<section class="articles-section">
+    <div class="container">
+        <div class="section-label-row">
+            <span class="section-label">Latest Articles</span>
+            <span class="section-rule"></span>
+            <a href="{% url 'articles:article_list' %}" class="section-more">View All Articles</a>
+        </div>
+        <div class="row g-4">
+            {% for article in featured_articles %}
+            <div class="col-md-6 col-lg-4">
+                <article class="article-card">
+                    <div class="card-img">
+                        {% if article.is_premium %}<span class="premium-badge">Premium</span>{% endif %}
+                    </div>
+                    <div class="card-cat">{{ article.category }}</div>
+                    <h2 class="card-title">{{ article.title }}</h2>
+                    <p class="card-excerpt">{{ article.excerpt }}</p>
+                    {% if article.is_premium %}
+                    <div class="card-lock">🔒 Premium content — subscribe to read in full</div>
+                    {% endif %}
+                    <div class="card-footer-row">
+                        <div class="card-meta"><span>{{ article.author }}</span> · {{ article.created_at|date:"d M" }}</div>
+                        <a href="{% url 'articles:article_detail' article.slug %}" class="card-link">Read</a>
+                    </div>
+                </article>
+            </div>
+            {% empty %}
+            <p>No articles yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Events Section -->
+<section class="events-section">
+    <div class="container">
+        <div class="section-label-row">
+            <span class="section-label">Upcoming Events</span>
+            <span class="section-rule"></span>
+            <a href="{% url 'events:event_list' %}" class="section-more">View All Events</a>
+        </div>
+        <div class="row g-4">
+            {% for event in upcoming_events %}
+            <div class="col-md-6 col-lg-4">
+                <div class="event-card">
+                    <div class="event-date-block">
+                        <div class="event-date-box">
+                            <span class="event-day">{{ event.event_date|date:"d" }}</span>
+                            <span class="event-month">{{ event.event_date|date:"M" }}</span>
+                        </div>
+                        <div class="event-location-info">
+                            <div class="event-country">{{ event.country }}</div>
+                            <div class="event-venue">{{ event.location }}</div>
+                        </div>
+                    </div>
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <p class="event-desc">{{ event.description|truncatewords:30 }}</p>
+                    <div class="event-footer">
+                        <a href="{% url 'events:event_detail' event.slug %}" class="event-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No upcoming events.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Premium Subscribe Stripe -->
+{% if not request.user.is_authenticated %}
+<section class="newsletter-stripe">
+    <div class="container newsletter-inner">
+        <div class="newsletter-copy">
+            <div class="newsletter-eyebrow">Premium Access</div>
+            <h2 class="newsletter-headline">Fashion technology intelligence, without limits</h2>
+        </div>
+        <div>
+            <p style="color:#888; font-size:13px; margin-bottom:16px;">Unlimited premium articles · €9.99/month · Cancel anytime</p>
+            <a href="{% url 'subscriptions:subscription_page' %}" class="newsletter-submit">Go Premium</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
 {% endblock %}
+
