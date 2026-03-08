@@ -11,6 +11,7 @@ class Event(models.Model):
     location = models.CharField(max_length=200)
     country = models.CharField(max_length=100)
     website_url = models.URLField(blank=True)
+    image = CloudinaryField('image', blank=True, null=True)
     is_published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
