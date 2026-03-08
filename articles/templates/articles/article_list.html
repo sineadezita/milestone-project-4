@@ -2,41 +2,63 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+<link rel="stylesheet" href="{% static 'css/articles.css' %}">
 {% endblock %}
 
-{% block title %}Articles - Atelier Zero ONe{% endblock %}
+{% block title %}Articles | Atelier Zero One{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1>Articles</h1>
-    <div class="row g-4">
-        {% for article in articles %}
-        <div class="col-md-6 col-lg-4">
-            <article class="article-card">
-                <div class="card-cat">{{ article.category }}</div>
-                <h2 class="card-title">{{ article.title }}</h2>
-                <p class="card-excerpt">{{ article.excerpt }}</p>
-                <div class="card-footer-row">
-                    <div class="card-meta">
-                        <span>{{ article.author }}</span> | {{ article.published_at|date:"d M Y" }}
-                    </div>
-                    <a href="{% url 'articles:article_detail' article.slug %}" class="card-link">Read</a>
-                </div>
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'accounts:save_article' article.id %}" class="btn-outline-dark-custom mt-2">
-                            {% if article in user.profile.saved_articles.all %}
-                                <i class="bi bi-bookmark-fill"></i> Saved 
-                            {% else %}
-                                <i class="bi bi-bookmark"></i> Save
-                            {% endif %}
-                        </a>
-                    {% endif %}
-            </article>
-        </div>
-        {% empty %}
-            <p>No articles yet.</p>
-        {% endfor %}
+<!-- Page Header -->
+<div class="container">
+    <div class="section-label-row mt-4">
+        <span class="section-label">All Articles</span>
+        <span class="section-rule"></span>
     </div>
 </div>
+
+<!-- Articles Grid -->
+<section class="articles-section">
+    <div class="container">
+        <div class="row g-4">
+            {% for article in articles %}
+            <div class="col-md-6 col-lg-4">
+                <article class="article-card">
+                    <div class="card-img">
+                        {% if article.image %}
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}" style="width: 100%; object-fit: cover;">
+                        {% endif %}
+                        {% if article.is_premium %}
+                            <span class="premium-badge">Premium</span>
+                        {% endif %}
+                    </div>
+                    <div class="card-cat">{{ article.category }}</div>
+                    <h2 class="card-title">{{ article.title }}</h2>
+                    <p class="card-excerpt">{{ article.excerpt }}</p>
+                    {% if article.is_premium %}
+                    <div class="card-lock">Premium content | subscribe to read in full</div>
+                    {% endif %}
+                    <div class="card-footer-row">
+                        <div class="card-maeta">
+                            <span>{{ article.author }}</span> . {{ article.published_at|date:"d M Y" }}
+                        </div>
+                        <a href="{% url 'articles:article_detail' article.slug %}" class="card-link">Read</a>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:save_article' article.id %}" class="btn-outline-dark-custom mt-2">
+                        {% if article in user.profile.saved_articles.all %}
+                        <i class="bi bi-bookmark-fill"></i> Saved
+                        {% else %}
+                        <i class="bi bi-bookmark"></i> Save
+                        {% endif %}
+                    </a>
+                    {% endif %}
+                </article>
+            </div>
+            {% empty %}
+            <p>No articles yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 {% endblock %}

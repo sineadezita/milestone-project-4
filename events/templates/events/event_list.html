@@ -1,36 +1,60 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/events.css' %}">
+{% endblock %}
+
 {% block title %}Events | Atelier Zero One{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1>Events</h1>
-    <div class="row g-4">
-        {% for event in events %}
-        <div class="col-md-6 col-lg-4">
-            <div class="event-card"></div>
-                <h3>{{ event.title }}</h3>
-                <p>{{ event.event_date|date:"d M Y" }}</p>
-                <p>{{ event.location }}, {{ event.country }}</p>
-                <p>{{ event.description }}</p>
-                <a href="{% url 'events:event_detail' event.slug %}">View Details</a>
 
-                <!-- Save butotn -->
-                {% if user.is_authenticated %}
-                    <a href="{% url 'accounts:save_event' event.id %}" class="btn-outline-dark-custom mt-2">
-                        {% if event in user.profile.saved_events.all %}
-                            <i class="bi bi-bookmark-fill"></i> Saved 
-                        {% else %}
-                            <i class="bi bi-bookmark"></i> Save Event
-                        {% endif %}
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-    {% empty %}
-        <p>No events yet.</p>
-    {% endfor %}
+<!-- Page Header -->
+<div class="container">
+    <div class="section-label-row mt-4">
+        <span class="section-label">Upcoming Events</span>
+        <span class="section-rule"></span>
     </div>
 </div>
+
+<!-- Events Grid -->
+<section class="events-section">
+    <div class="container">
+        <div class="row g-4">
+            {% for event in events %}
+            <div class="col-md-6 col-lg-4">
+                <div class="event-card">
+                    <div class="event-date-block">
+                        <div class="event-date-box">
+                            <span class="event-day">{{ event.event_date|date:"d" }}</span>
+                            <span class="event-month">{{ event.event_date|date:"M" }}</span>
+                        </div>
+                        <div>
+                            <div class="event-country">{{ event.country }}</div>
+                            <div class="event-location">{{ event.location }}</div>
+                        </div>
+                    </div>
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <p class="event-desc">{{ event.description|truncatewords:30 }}</p>
+                    <div class="event-footer">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'accounts:save_event' event.id %}" class="btn-outline-dark-custom">
+                            {% if event in user.profile.saved_events.all %}
+                            <i class="bi bi-bookmark-fill"></i> Saved
+                            {% else %}
+                            <i class="bi-bi-bookmark"></i> Save
+                            {% endif %}
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'events:event_detail' event.slug %}" class="event-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No events yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 {% endblock %}
