@@ -35,12 +35,14 @@ ALLOWED_HOSTS = ['atelier-zero-one.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -180,3 +182,11 @@ if 'DATABASE_URL' in os.environ:
 
 # Heroku
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
+
+CLOUDINARY_STORAGE = {
+   'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+   'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+   'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

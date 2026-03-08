@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -28,6 +29,7 @@ class Article(models.Model):
     )
     body = models.TextField()
     excerpt = models.TextField(max_length=300, blank=True)
+    image = CloudinaryField('image', blank=True, null=True)
     is_premium = models.BooleanField(default=False)
     is_published = models.BooleanField(default=False)
     published_at = models.DateTimeField(null=True, blank=True)
