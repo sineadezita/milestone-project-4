@@ -1,74 +1,143 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}{{ article.title }} Atelier Zero One{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock %}
+
+{% block title %}{{ article.title }} | Atelier Zero One{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
+
+    <!-- Back link -->
+    <div class="section-label-row">
+        <span class="section-label">{{ article.category }}</span>
+        <span class="section-rule"></span>
+        <a href="{% url 'articles:article_list' %}" class="section-more">← All Articles</a>
+    </div>
+
     <div class="row">
         <div class="col-lg-8">
 
-            <!-- Article header -->
-            <div class="article-header">
-                <p class="card-cat">{{ article.category }}</p>
-                <h1>{{ article.title }}</h1>
+            <!-- Article Image -->
+            {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="article-detail-img mb-4">
+            {% endif %}
+
+            <!-- Article Header -->
+            <div class="article-header mb-4">
+                <h1 class="article-detail-title">{{ article.title }}</h1>
                 <div class="article-meta">
-                    <span>{{ article.author }}</span>
+                    <span class="author">{{ article.author }}</span>
+                    <span class="dot"></span>
                     <span>{{ article.published_at|date:"d M Y" }}</span>
+                    {% if article.is_premium %}
+                    <span class="premium-badge-inline">★ Premium</span>
+                    {% endif %}
                 </div>
             </div>
 
-            <!-- Premium lock -->
+            <!-- Premium Lock -->
             {% if article.is_premium and not user.subscription.status == 'active' %}
-                <div class="premium-lock">
-                    <i class="bi bi-lock-fill"></i>
-                    <p>This is premium content. Subscribe to read in full.</p>
-                    <a href="#" class="btn-gold">Subscribe Now</a>
-                </div> 
+            <div class="premium-lock">
+                <div class="premium-lock-inner">
+                    <div class="premium-lock-icon">🔒</div>
+                    <h3>Premium Content</h3>
+                    <p>Subscribe to Atelier Zero One Premium to read this article in full.</p>
+                    <a href="{% url 'subscriptions:subscription_page' %}" class="btn-dark-custom">Subscribe — €9.99/month</a>
+                </div>
+            </div>
             {% else %}
-            <!-- Article body -->
+
+            <!-- Article Body -->
             <div class="article-body">
                 {{ article.body|linebreaks }}
             </div>
-        {% endif %}
-        
-        <!-- Comments section -->
-        <div class="comments-section mt-4">
-            <h3>Comments</h3>
+            {% endif %}
 
-            <!-- Existing comments -->
-            {% for comment in article.comments.all %}
+            <!-- Comments Section -->
+            <div class="comments-section mt-5">
+                <div class="section-label-row">
+                    <span class="section-label">Comments</span>
+                    <span class="section-rule"></span>
+                </div>
+
+                {% for comment in article.comments.all %}
                 {% if comment.is_approved %}
-                    <div class="comment">
+                <div class="comment-item">
+                    <div class="comment-header">
                         <strong>{{ comment.author }}</strong>
-                        <span>{{ comment.created_at|date:"d M Y" }}</span>
-                        <p>{{ comment.body }}</p>
-
-                        <!-- Edit and delete (only shown to comment author) -->
-                        {% if user == comment.author %}
-                            <a href="{% url 'comments:edit_comment' comment.id %}">Edit</a>
-                            <a href="{% url 'comments:delete_comment' comment.id %}">Delete</a>
-                        {% endif %}
-                    </div> 
-                {% endif %}
-            {% empty %}
-                <p>No comments yet.</p>
-            {% endfor %}
-
-            <!-- Add comment form (only shown to logged in users) -->
-            {% if user.is_authenticated %}
-                <form method="POST" action="{% url 'comments:add_comment' article.id %}">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="body">Leave a comment</label>
-                        <textarea name="body" id="body" rows="4" class="form-control"></textarea>
+                        <span class="comment-date">{{ comment.created_at|date:"d M Y" }}</span>
                     </div>
-                    <button type="submit" class="btn-dark-custom">Submit Comment</button>
-                </form>
-            {% else %}
-                <p><a href="{% url 'account_login' %}">Log in</a> to leave a comment.</p>
-            {% endif %}  
-        </div> 
+                    <p class="comment-body">{{ comment.body }}</p>
+                    {% if user == comment.author %}
+                    <div class="comment-actions">
+                        <a href="{% url 'comments:edit_comment' comment.id %}" class="comment-action-link">Edit</a>
+                        <a href="{% url 'comments:delete_comment' comment.id %}" class="comment-action-link">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% empty %}
+                <p class="no-content">No comments yet — be the first.</p>
+                {% endfor %}
 
+                <!-- Add Comment Form -->
+                {% if user.is_authenticated %}
+                <div class="comment-form mt-4">
+                    <div class="section-label-row">
+                        <span class="section-label">Leave a Comment</span>
+                        <span class="section-rule"></span>
+                    </div>
+                    <form method="POST" action="{% url 'comments:add_comment' article.id %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <textarea name="body" id="body" rows="4" class="comment-textarea" placeholder="Share your thoughts..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-dark-custom">Submit Comment</button>
+                    </form>
+                </div>
+                {% else %}
+                <p class="mt-3"><a href="{% url 'account_login' %}">Log in</a> to leave a comment.</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="article-sidebar">
+                <div class="sidebar-hd mb-3">About this article</div>
+                <div class="sidebar-meta-item">
+                    <span class="sidebar-meta-label">Category</span>
+                    <span class="sidebar-meta-value">{{ article.category }}</span>
+                </div>
+                <div class="sidebar-meta-item">
+                    <span class="sidebar-meta-label">Author</span>
+                    <span class="sidebar-meta-value">{{ article.author }}</span>
+                </div>
+                <div class="sidebar-meta-item">
+                    <span class="sidebar-meta-label">Published</span>
+                    <span class="sidebar-meta-value">{{ article.published_at|date:"d M Y" }}</span>
+                </div>
+                {% if article.is_premium %}
+                <div class="sidebar-meta-item">
+                    <span class="sidebar-meta-label">Access</span>
+                    <span class="sidebar-meta-value" style="color: var(--gold);">★ Premium</span>
+                </div>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                <a href="{% url 'accounts:save_article' article.id %}" class="btn-outline-dark-custom mt-4" style="width:100%; text-align:center;">
+                    {% if article in user.profile.saved_articles.all %}
+                    <i class="bi bi-bookmark-fill"></i> Saved
+                    {% else %}
+                    <i class="bi bi-bookmark"></i> Save Article
+                    {% endif %}
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
