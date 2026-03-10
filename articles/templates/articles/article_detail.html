@@ -74,7 +74,7 @@
                     {% if user == comment.author %}
                     <div class="comment-actions">
                         <a href="{% url 'comments:edit_comment' comment.id %}" class="comment-action-link">Edit</a>
-                        <a href="{% url 'comments:delete_comment' comment.id %}" class="comment-action-link">Delete</a>
+                        <a href="{% url 'comments:delete_comment' comment.id %}" class="comment-action-link delete-link">Delete</a>
                     </div>
                     {% endif %}
                 </div>
