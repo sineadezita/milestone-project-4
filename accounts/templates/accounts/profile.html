@@ -1,15 +1,81 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock %}
+
 {% block title %}My Profile | Atelier Zero One{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h1>My Profile</h1>
-    <p>Username: {{ profile.user.username }}</p>
-    <p>Email: {{ profile.user.email }}</p>
-    <a href="{% url 'accounts:reading_list' %}" class="btn-dark-custome">
-        My Reading List
-    </a>
+
+    <div class="section-label-row">
+        <span class="section-label">My Profile</span>
+        <span class="section-rule"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    {{ profile.user.username|first|upper }}
+                </div>
+                <div class="profile-username">{{ profile.user.username }}</div>
+                <div class="profile-email">{{ profile.user.email }}</div>
+                {% if profile.user.subscriptions.status == 'active' %}
+                <div class="profile-badge">Premium Member</div>
+                {% else %}
+                <a href="{% url 'subscriptions:subscription_page' %}" class="btn-gold mt-3" style="display:inline-block; padding: 9px 18px">Upgrade to Premium</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="profile-section">
+                <div c;ass="section-label-row">
+                    <span class="section-label">Account Details</span>
+                    <span class="section-rule"></span>
+                </div>
+                <div class="profile-meta-item">
+                    <span class="profile-meta-label">Username</span>
+                    <span class="profile-meta-value">{{ profile.user.username }}</span>
+                </div>
+                <div class="profile-meta-item">
+                    <span class="profile-mata-label">Member Since</span>
+                    <span class="profile-meta-value">{{ profile.user.date_joined|date:"d M Y" }}</span>
+                </div>
+                <div class="profile-meta-item">
+                    <soan class="profile-meta-label">Subscription</soan>
+                    <span class="profile-meta-value">
+                        {% if profile.user.subscription == 'active' %}
+                        <span style="color: var(--gold)">Premium</span>
+                        {% else %}
+                        Free
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            <div class="profile-section mt-4">
+                <div class="section-label-row">
+                    <soan class="section-label">Reading List</soan>
+                    <span class="section-rule"></span>
+                    <a href="{% url 'accounts:reading_list' %}" class="section-more">View All</a>
+                </div>
+                {% if profile.saved_articles.all %}
+                {% for article in profile.saved_articles.all|slice:":3" %}
+                <div class="profile-saved-item">
+                    <div class="profile-saved-cat">{{ article.category }}</div>
+                    <div class="profile-saved-title">
+                        <a href="{% url 'articles:article_detail' article.slug %}">{{ article.title }}</a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p class="no-content">No saved articles yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

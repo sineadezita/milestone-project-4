@@ -15,7 +15,7 @@
 |---------|----------|--------|-----------|
 
 ### Events
-| Feature | Expected | Result | Pass/Fail |er
+| Feature | Expected | Result | Pass/Fail |
 |---------|----------|--------|-----------|
 
 ### Subscriptions & Payments 
