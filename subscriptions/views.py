@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 from .models import Subscription
+from audit_log.utils import log_action
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -53,8 +54,10 @@ def create_checkout_session(request):
 @login_required
 def subscription_success(request):
     """ Manage successful subscriptions """
+    log_action(request.user, 'subscribe', 'Subscription created', request)
     messages.success(request, 'Welcome to Atelier Zero One Premium!')
     return render(request, 'subscriptions/success.html')
+    
 
 
 
@@ -108,6 +111,7 @@ def webhook(request):
             customer = stripe.Customer.retrieve(customer_id)
             user = User.objects.get(email=customer['email'])
             Subscription.objects.filter(user=user).update(status='cancelled')
+            log_action(user, 'cancel', 'Subscription cancelled via webhook')
         except User.DoesNotExist:
             pass
 

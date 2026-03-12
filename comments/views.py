@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Comment
 from articles.models import Article
+from audit_log.utils import log_action
 
 
 # Create your views here.
@@ -21,6 +22,7 @@ def add_comment(request, article_id):
                 body=body,
                 is_approved=False
             )
+            log_action(request.user, 'comment', f'Comment on: {article.title }', request)
             messages.success(request, 'Comment submitted and awaiting approval')
         return redirect('articles:article_detail', slug=article.slug)
     

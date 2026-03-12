@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from django.contrib import messages
-from django.shortcuts import render, get_object_or_404, redirect
+from articles.models import Article
+from events.models import Event
+from audit_log.utils import log_action
 
 # Create your views here.
 
@@ -37,6 +39,7 @@ def save_article(request, article_id):
         messages.success(request, f'Removed {article.title} from your reading list')
     else:
         profile.saved_articles.add(article)
+        log_action(request.user, 'save_article', f'Saved: {article.title}', request)
         messages.success(request, f'Added {article.title} to your reading list')
 
     return redirect('articles:article_list')
@@ -53,7 +56,8 @@ def save_event(request, event_id):
         messages.success(request, f'Removed {event.title} from your saved events')
     else:
         profile.saved_events.add(event)
-        messages.success(request, f'Added {event.title} to your rsaved events')
+        log_action(request.user, 'save_event', f'Saved: {event.title}', request)
+        messages.success(request, f'Added {event.title} to your saved events')
 
     return redirect('events:event_list')
 

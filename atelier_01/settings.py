@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'subscriptions',
     'comments',
     'events',
+    'audit_log',
 ]
 
 MIDDLEWARE = [

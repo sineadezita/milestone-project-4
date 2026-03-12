@@ -92,3 +92,13 @@ profile-card {
 }
 
 .profile-saved-title a:hover { color: var(--black); }
+
+/* Reading List */
+.reading-list-empty {
+    text-align: center;
+    padding: 60px 0;
+    border: 1px solid var(--border);
+    color: var(--grey-400);
+    font-size: 14px;
+    margin-bottom: 48px;
+}

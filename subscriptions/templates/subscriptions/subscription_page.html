@@ -1,28 +1,68 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/subscriptions.css' %}">
+{% endblock %}
+
 {% block title %}Go Premium | Atelier Zero One{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
+    <div class="section-label-row">
+        <span class="section-label">Premium Membership</span>
+        <span class="section-rule"></span>
+    </div>
+
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1>Atelier Zero One Premium</h1>
+        <div class="col-lg-7">
 
             {% if subscription and subscription.status == 'active' %}
-                <p>You are already a premium member.</p>
+            <div class="subscription-active">
+                <div class="sibscription-active-icon">*</div>
+                <h2 class="subscription-active-title">You are a Premium Member</h2>
+                <p class="subscription-active-text">You have full access to all premium articles and content on Atelier Zero One.</p>
+                <a href="{% url 'articles: article_list' %}" class="btn-dark-custom">Browse Articles</a>
+            </div>
+
             {% else %}
-                <p>Get unlimited access to all premium articles.</p>
-                <ul>
-                    <li>Full access to premium articles</li>
-                    <li>Early access to new content</li>
-                    <li>Support independent journalism</li>
-                </ul>
-                <a href="{% url 'subscriptions:checkout' %}" class="btn-dark-custom">
-                    Subscribe Now for €9.98/month
-                </a>
+            <div class="subscription-card">
+                <div class="subscription-header">
+                    <div class="subscription-eyebrow">Atelier Zero One</div>
+                    <h1 class="subscription-title">Premium Access</h1>
+                    <div class="subscription-price">
+                        <span class="proce-amount">€9.99</span>
+                        <span class="price-period">/ month</span>
+                    </div>
+                </div>
+
+                <div class="subscription-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">add tick</span>
+                        <span>Full access to premium articles</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">add tick</span>
+                        <span>Early access to new content</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">add tick</span>
+                        <span>Support independent journalism</span>
+                    </div>
+                </div>
+
+                <div class="subscription-cta">
+                    <a href="{% url 'subscriptions:checkout' %}" class="btn-dark-custom subscription-btn">
+                        Subscribe Now
+                    </a>
+                    <p class="subscription-small">Cancel anytine. Secure payment via Stripe.</p>
+                </div>
+            </div>
             {% endif %}
+
+
         </div>
     </div>
 </div>
+
 {% endblock %}
