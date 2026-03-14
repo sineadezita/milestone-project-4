@@ -1,0 +1,206 @@
+[
+  {
+    "model": "articles.article",
+    "pk": 1,
+    "fields": {
+      "title": "CLO 3D Is Changing How Fashion Samples Are Made",
+      "slug": "clo-3d-virtual-sampling",
+      "author": 1,
+      "category": 1,
+      "body": "For decades, the physical sample has been the backbone of the fashion industry. A designer sketches an idea, a pattern cutter translates it into paper, a machinist stitches a prototype, and the sample travels — sometimes across continents — to be assessed, rejected, and remade. The process is expensive, slow, and wasteful. CLO 3D is one of the companies quietly dismantling it.\n\nCLO Virtual Fashion, the Seoul-based company behind the software, produces a 3D garment simulation tool that allows designers to build and test garments digitally before a single metre of fabric is cut. The physics engine simulates how different fabrics drape, stretch, and behave on the body, with material properties that can be adjusted to mimic everything from heavy denim to sheer silk.\n\nThe adoption across the industry has been significant. PVH Corp, the parent company of Calvin Klein and Tommy Hilfiger, has integrated CLO 3D into its design workflow as part of a broader push to reduce development costs and sampling waste. Adidas, G-Star Raw, and a growing number of European mid-market brands have followed.\n\nThe environmental argument is straightforward. Physical sampling is resource-intensive. Each sample requires fabric, thread, labour, and often international shipping. When a sample is rejected — as many are — those resources are lost entirely. Virtual sampling eliminates much of that waste at the development stage, before production decisions are made.\n\nThere are limitations. CLO 3D requires investment in training and hardware. Smaller independent designers often lack the resources to adopt the software at scale. And while the simulation is sophisticated, some designers argue that digital renders cannot fully replace the tactile experience of handling a physical garment.\n\nBut the direction of travel is clear. As sustainability pressure mounts on fashion brands and the cost of physical development rises, virtual sampling is moving from a niche tool to an industry standard. CLO 3D is not the only player — Browzwear and Optitex offer competing platforms — but it has become the most widely recognised name in a space that is growing quickly.\n\nFor a fashion industry still grappling with its environmental footprint, the shift to digital sampling represents one of the more concrete and measurable steps available. It will not solve fast fashion. But it removes waste at the point where much of it begins.",
+      "excerpt": "CLO 3D allows designers to build and test garments digitally before a single metre of fabric is cut. As pressure mounts on fashion brands to reduce waste, virtual sampling is moving from niche tool to industry standard.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-02-10T09:00:00Z",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 2,
+    "fields": {
+      "title": "Stella McCartney and the Mycelium Leather Bet",
+      "slug": "stella-mccartney-mycelium-leather",
+      "author": 1,
+      "category": 2,
+      "body": "In 2021, Stella McCartney presented a Stan Smith trainer made with Mylo, a leather alternative grown from mycelium — the root structure of mushrooms. The collaboration with Bolt Threads, a California-based materials science company, was one of the most high-profile deployments of a material that its proponents believe could fundamentally change the economics of sustainable fashion.\n\nMylo is produced by feeding mycelium a diet of corn stalks and husks in a controlled environment. Within days, the organism grows into a dense mat of fibres that can be harvested, processed, and finished to produce a material that looks and handles like animal leather. It is biodegradable, requires no animal agriculture, and has a significantly lower land and water footprint than conventional leather production.\n\nMcCartney has been one of the most prominent voices in sustainable luxury fashion for two decades. Her brand has never used leather or fur — a position that was commercially unusual when she launched in 2001 and is now increasingly mainstream. Her interest in Mylo fits a pattern: identifying materials at an early stage and backing them publicly before they reach commercial scale.\n\nBolt Threads counts Adidas, Lululemon, and Stella McCartney herself among the founding members of the Mylo Consortium, a group formed to accelerate production and bring the material to market at scale. That scale remains a challenge. Mycelium leather is still significantly more expensive to produce than conventional alternatives, and manufacturing capacity is limited.\n\nThe broader category — bio-based and lab-grown materials — is attracting serious investment. Modern Meadow, Natural Fiber Welding, and Galy are among the companies working on alternatives to cotton, leather, and synthetic fibres. The common thread is the argument that the fashion industry's dependence on resource-intensive natural materials and polluting synthetics is a liability that new materials science can address.\n\nWhether mycelium leather can move from flagship collaboration to mainstream production is still an open question. The technology is real and the science is sound. The challenge now is industrial scale and cost. McCartney's continued involvement in that conversation is, at minimum, a signal that sustainable materials innovation is not a marketing exercise for her brand.",
+      "excerpt": "Stella McCartney's collaboration with Bolt Threads on Mylo, a leather grown from mycelium, is one of the most visible tests of whether bio-based materials can move from innovation to commercial scale.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-02-17T09:00:00Z",
+      "created_at": "2026-02-17T09:00:00Z",
+      "updated_at": "2026-02-17T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 3,
+    "fields": {
+      "title": "How AI Trend Forecasting Is Replacing the Mood Board",
+      "slug": "ai-trend-forecasting-fashion",
+      "author": 1,
+      "category": 3,
+      "body": "The traditional trend forecasting industry operates on a long lag. Agencies like WGSN and Trend Union employ teams of analysts who travel to fashion weeks, monitor street style, and track cultural signals to produce reports that brands use to inform collections eighteen months in advance. The process is expensive, slow, and — critics argue — self-fulfilling: the same brands reading the same reports produce the same trends.\n\nAI-driven forecasting tools are beginning to challenge that model. Companies like Heuritech, a Paris-based startup, use image recognition and machine learning to analyse millions of social media images in real time, identifying emerging style signals before they appear in the mainstream fashion conversation. Their clients include LVMH, Dior, and Lacoste.\n\nEdited, a retail analytics platform, approaches the problem from the other direction — tracking what brands are actually producing and selling, rather than what consumers are wearing. Its software monitors product launches, pricing changes, and sell-through rates across thousands of retailers, giving brands a data-driven picture of the competitive landscape.\n\nThe appeal is practical. Fashion's overproduction problem is well documented. The Ellen MacArthur Foundation has estimated that less than 1% of clothing is recycled into new clothing at end of life, and a significant volume of unsold stock ends up incinerated or landfilled. Overproduction is not only an environmental failure — it is a financial one, representing capital tied up in inventory that will never be sold at full price.\n\nAI forecasting tools promise to reduce overproduction by giving brands more accurate signals about what consumers actually want, and when. If the models are good enough, brands can produce closer to demand rather than speculating twelve months ahead.\n\nThere are reasons for scepticism. Machine learning models trained on social media data will inevitably reflect and amplify existing trends rather than identifying genuinely new ones. There is also a question of what happens to the industry's creative culture if every major brand is optimising against the same datasets.\n\nBut the commercial pressure is real, and the investment is following. The question is no longer whether AI will play a role in fashion forecasting but how much creative judgment will survive alongside it.",
+      "excerpt": "AI tools like Heuritech and Edited are challenging the traditional trend forecasting model, promising to reduce overproduction by giving brands more accurate signals about what consumers actually want.",
+      "is_premium": true,
+      "is_published": true,
+      "published_at": "2026-02-24T09:00:00Z",
+      "created_at": "2026-02-24T09:00:00Z",
+      "updated_at": "2026-02-24T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 4,
+    "fields": {
+      "title": "The Carbon Cost of AI in Fashion",
+      "slug": "carbon-cost-ai-fashion",
+      "author": 1,
+      "category": 3,
+      "body": "The fashion industry has spent the last decade under scrutiny for its environmental impact. Water consumption in cotton farming, chemical runoff from dyeing processes, and the carbon footprint of global logistics have all attracted sustained criticism. Now a new variable is entering the equation: the energy cost of artificial intelligence.\n\nTraining a large AI model consumes significant amounts of electricity. A 2019 study by researchers at the University of Massachusetts Amherst estimated that training a single large natural language processing model could emit as much CO2 as five cars over their entire lifetimes. Inference — the process of running a trained model to generate outputs — adds to that cost at scale. As fashion brands integrate AI tools into design, forecasting, marketing, and customer service, the energy footprint of those tools becomes a legitimate part of the environmental ledger.\n\nThe comparison that matters for fashion is not AI against some ideal zero-carbon baseline, but AI against the processes it replaces. If AI-driven demand forecasting reduces overproduction, the energy cost of running the models may be offset by the reduction in manufacturing, shipping, and waste disposal. If CLO 3D eliminates three rounds of physical sampling for a single garment, the electricity consumed by the simulation software may be considerably less than the emissions from air-freighting samples between Seoul and Milan.\n\nThe honest answer is that the industry does not yet have good data on this trade-off. Life cycle analyses of AI tools in fashion are scarce, and the companies selling those tools have an obvious interest in framing the calculation favourably.\n\nWhat is clear is that the energy infrastructure matters. AI tools run on data centres, and data centres run on electricity. A brand running AI forecasting tools on a cloud platform powered by renewable energy is in a different position from one running equivalent workloads on a coal-heavy grid.\n\nFor fashion brands making sustainability claims, the emergence of AI as a significant operational tool creates a new disclosure challenge. The carbon cost of digital infrastructure is real, it is measurable, and it belongs in any serious accounting of a brand's environmental footprint. The industry that spent years learning to count the water in a cotton T-shirt now needs to learn to count the kilowatts in an algorithm.",
+      "excerpt": "As fashion brands integrate AI into design, forecasting, and marketing, the energy cost of those tools becomes part of the environmental ledger. The industry needs to learn to count the kilowatts in an algorithm.",
+      "is_premium": true,
+      "is_published": true,
+      "published_at": "2026-03-03T09:00:00Z",
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 5,
+    "fields": {
+      "title": "Fashion Revolution and the Question That Changed an Industry",
+      "slug": "fashion-revolution-who-made-my-clothes",
+      "author": 1,
+      "category": 2,
+      "body": "On 24 April 2013, the Rana Plaza garment factory complex in Savar, Bangladesh, collapsed. Eight buildings fell. More than 1,100 people were killed and over 2,500 were injured, making it the deadliest structural failure in the history of the garment industry. Among the dead were workers producing garments for a range of Western brands.\n\nOne year later, Carry Somers and Orsola de Castro founded Fashion Revolution, a global movement built around a single question: who made my clothes? The question was designed to make visible the human labour embedded in every garment — labour that the fashion industry's supply chain model had systematically obscured.\n\nFashion Revolution Week, held annually in the week of the Rana Plaza anniversary, has grown into one of the most significant campaigns in sustainable fashion. Consumers photograph the labels of their clothing and post them to social media, asking brands directly about the conditions and pay of the workers in their supply chains. Brands that respond — and an increasing number do — are pressured to go further, disclosing factory lists, audit results, and living wage commitments.\n\nThe campaign has contributed to a measurable shift in supply chain transparency. The Fashion Transparency Index, published annually by Fashion Revolution, tracks disclosure practices across 250 of the world's largest fashion brands. The 2023 index found that the average transparency score had increased significantly since the index's launch in 2016, though it noted that disclosure does not always translate into genuine accountability.\n\nDe Castro, who served as co-creative director of the movement until stepping back from day-to-day operations, has been one of the most articulate voices in sustainable fashion for two decades. Her book Loved Clothes Last argues for a relationship with clothing based on care, repair, and longevity rather than disposability.\n\nRana Plaza did not end fast fashion. The volumes of cheap clothing produced globally have continued to rise in the decade since the disaster. But it created a moment of accountability that the industry has not been able to fully close, and Fashion Revolution has kept that moment alive. The question — who made my clothes — remains unanswered for most of the garments most consumers own.",
+      "excerpt": "Fashion Revolution was founded in response to the Rana Plaza disaster of 2013. A decade on, the movement's core question — who made my clothes — remains unanswered for most garments most consumers own.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-03-05T09:00:00Z",
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 6,
+    "fields": {
+      "title": "The Fabricant and the Business of Clothes You Cannot Wear",
+      "slug": "the-fabricant-digital-fashion",
+      "author": 1,
+      "category": 1,
+      "body": "In May 2019, a digital dress sold for $9,500. The dress — called Iridescence, designed by The Fabricant in collaboration with artist Johanna Jaskowska — existed only as a digital file. The buyer received a JPEG of themselves wearing it, generated by overlaying the garment onto a photograph. No fabric was cut. No garment was shipped. Nothing physical changed hands.\n\nThe Fabricant, an Amsterdam-based digital fashion house founded by Kerry Murphy and Amber Jae Slooten, has positioned itself at the intersection of fashion, technology, and digital ownership. It produces garments that exist exclusively in digital form, designed to be worn in photographs, social media content, and — increasingly — virtual environments.\n\nThe environmental argument is the obvious one. A digital garment produces no textile waste, requires no water, and generates no shipping emissions. For a fashion industry whose physical production model is responsible for significant environmental damage, the proposition is straightforward: what if some of the demand for new clothing could be satisfied digitally?\n\nWhether that substitution actually occurs is a more complicated question. There is little evidence that consumers who purchase digital fashion reduce their consumption of physical clothing. Digital fashion may be additive demand rather than a replacement for it.\n\nThe market for digital fashion has grown significantly with the rise of gaming and virtual worlds. Fortnite, Roblox, and a range of other platforms have built substantial economies around digital clothing and accessories. Luxury brands including Gucci, Balenciaga, and Ralph Lauren have launched virtual collections, treating game environments as a new channel for brand expression and youth audience engagement.\n\nThe Fabricant's model sits at the more conceptual end of this spectrum. Its work asks a question that the broader industry is only beginning to take seriously: as more of social life moves into digital spaces, what is the function of clothing, and does it need to be physical to fulfil it?\n\nThe answer, for most people in most contexts, is still yes. But the question is becoming more interesting.",
+      "excerpt": "The Fabricant produces garments that exist only as digital files. As more of social life moves into digital spaces, the Amsterdam studio is asking whether clothing needs to be physical to fulfil its function.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-03-08T09:00:00Z",
+      "created_at": "2026-03-08T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 7,
+    "fields": {
+      "title": "Drive to Survive and the Transformation of F1 into a Fashion Property",
+      "slug": "f1-drive-to-survive-fashion",
+      "author": 1,
+      "category": 1,
+      "body": "When Netflix released the first series of Drive to Survive in March 2019, Formula 1's global audience was ageing and its commercial appeal outside Europe and Brazil was limited. Seven series later, the sport has a new demographic: younger, more female, more American, and significantly more interested in the personalities behind the helmets than the technical specifications of the cars.\n\nThe fashion industry noticed. What Drive to Survive did was create parasocial relationships between fans and drivers at a scale that traditional sports coverage had never achieved. Lando Norris, Charles Leclerc, and Carlos Sainz became style references in a way that previous generations of F1 drivers had not. Their off-duty appearances — at fashion weeks, in brand campaigns, in their own social media content — began to generate the kind of engagement that luxury brands pay significant sums to access.\n\nThe commercial response has been direct. LVMH signed a ten-year partnership with Formula 1 in 2024, bringing Louis Vuitton, Moët Hennessy, and TAG Heuer into alignment with a sport that now reaches the same audience as high fashion. KITH, the New York streetwear brand, has produced F1 collaborations. Represent Clothing built a significant part of its early audience through associations with the McLaren garage.\n\nThe technical textile dimension is genuine rather than cosmetic. F1 race suits are produced to FIA standards and must meet strict flammability requirements — they are among the most technically demanding garments manufactured at commercial scale. Sparco, Alpinestars, and OMP are the dominant suppliers, using multi-layer aramid fibre constructions that can withstand direct flame exposure for extended periods while remaining light enough to wear for two hours in a cockpit exceeding 50 degrees Celsius.\n\nTeam kit — the polos, jackets, and casualwear sold to fans — has become a fashion category in its own right. McLaren's papaya orange has achieved brand recognition comparable to luxury fashion house colourways. The waiting list for certain team collaboration pieces has mirrored the dynamics of limited streetwear drops.\n\nWhat Drive to Survive created, ultimately, was not just a new F1 audience. It created a new type of sports fan — one whose relationship with the sport is as much about identity and aesthetics as competition. That fan is exactly who the fashion industry has been trying to reach.",
+      "excerpt": "Drive to Survive created a new F1 audience that follows drivers as style icons. The fashion industry responded — LVMH signed a ten-year F1 partnership in 2024, and team kit has become a fashion category in its own right.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-03-10T09:00:00Z",
+      "created_at": "2026-03-10T09:00:00Z",
+      "updated_at": "2026-03-10T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 8,
+    "fields": {
+      "title": "The Technical Textile Behind the F1 Race Suit",
+      "slug": "f1-race-suit-technical-textile",
+      "author": 1,
+      "category": 4,
+      "body": "The Formula 1 race suit is one of the most technically demanding garments manufactured at commercial scale. It must protect a driver from direct flame exposure, withstand temperatures exceeding 50 degrees Celsius inside a cockpit, manage moisture over a two-hour physical effort, and weigh as little as possible — all while meeting the strict certification requirements of the FIA.\n\nThe core material is aramid fibre — a synthetic fibre in the same family as Kevlar, best known for its use in ballistic protection. In race suit construction, aramid fibres are woven into multiple layers, each serving a specific protective or comfort function. The outer layer provides abrasion resistance. The middle layers provide thermal insulation and flame protection. The inner layer manages moisture and maintains comfort against the skin.\n\nSparco, Alpinestars, and OMP are the three dominant manufacturers. Each produces suits certified to FIA 8856-2018, the standard introduced in 2018 that requires suits to protect drivers from direct flame for a minimum of 12 seconds — an increase from the previous 10-second standard introduced after Niki Lauda's 1976 accident at the Nürburgring.\n\nThe weight of a competition suit is typically around 600 to 700 grams — roughly the weight of a heavy cotton shirt. Achieving that weight while meeting thermal protection standards requires precise engineering of both the fibre construction and the cut of the garment. Seams are a particular challenge: double-stitched seams add both weight and potential weak points in the protective layering.\n\nThe relationship between F1 technical textiles and mainstream fashion has historically been limited to aesthetics — the racing stripe, the sponsor patch, the colourway. But the materials science developed for motorsport protection has influenced the broader performance wear market. Moisture management technologies, lightweight thermal insulation, and stretch-woven fabrics developed for competition environments have found commercial applications in cycling, skiing, and high-performance outdoor clothing.\n\nAs the fashion industry's interest in F1 grows, the technical credibility of race-derived textiles provides a genuine foundation for collaboration — beyond the purely cosmetic team-branded casualwear that has dominated the fashion-motorsport crossover so far.",
+      "excerpt": "The F1 race suit must protect drivers from direct flame, manage heat and moisture, and weigh under 700 grams. The materials science behind it has quietly influenced the broader performance wear market.",
+      "is_premium": true,
+      "is_published": true,
+      "published_at": "2026-03-11T09:00:00Z",
+      "created_at": "2026-03-11T09:00:00Z",
+      "updated_at": "2026-03-11T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 9,
+    "fields": {
+      "title": "Serena Williams, Virgil Abloh and the Redesign of Tennis Fashion",
+      "slug": "serena-williams-tennis-fashion",
+      "author": 1,
+      "category": 4,
+      "body": "In 2018, Serena Williams walked onto the court at Roland Garros in a black catsuit designed by Nike. The French Tennis Federation subsequently announced that players would be required to respect the spirit of the game in their clothing choices — a statement widely interpreted as a response to Williams' outfit. The episode drew global attention and crystallised a debate that had been building in tennis for years: who controls what players wear, and what is the relationship between performance, identity, and fashion on court?\n\nWilliams' relationship with fashion has been one of the most commercially significant in sport. Her 2018 collaboration with Virgil Abloh for Nike Off-White produced a collection that sold out immediately and generated press coverage that crossed from sports media into fashion editorial. The collection included a tutu-style dress that Williams wore at the US Open — a garment that was simultaneously a performance piece engineered for movement and a fashion statement that referenced ballet and Black femininity.\n\nThe technical requirements of tennis clothing are significant. Players generate explosive lateral movement, overhead reach, and sustained physical effort over matches that can last several hours. Fabrics must allow full range of motion, manage sweat, and maintain their structure and appearance under sustained stress. Nike, Adidas, and On Running — the brand that signed Iga Swiatek — invest heavily in the performance engineering of their on-court collections.\n\nThe Netflix effect that transformed F1's audience demographics has had a parallel, if smaller, impact on tennis through Break Point, the documentary series that followed players on the ATP and WTA tours. The series increased casual engagement with players as personalities, and with it, interest in what they wear off court as much as on it.\n\nCarlos Alcaraz's partnership with Louis Vuitton, announced in 2023, is the clearest signal of where tennis-fashion crossover is heading. Alcaraz is young, ranked among the world's best, and has the kind of photogenic charisma that luxury brands spend considerable sums trying to manufacture. His partnership with Louis Vuitton is not a sportswear deal — it is a fashion endorsement, treating a tennis player as a cultural figure rather than simply an athlete.",
+      "excerpt": "From Serena Williams' Roland Garros catsuit to Carlos Alcaraz's Louis Vuitton partnership, tennis is producing fashion moments that cross from sports media into luxury editorial.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-03-12T09:00:00Z",
+      "created_at": "2026-03-12T09:00:00Z",
+      "updated_at": "2026-03-12T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 10,
+    "fields": {
+      "title": "Smart Textiles: Where Performance Wear Meets Fashion Tech",
+      "slug": "smart-textiles-performance-fashion",
+      "author": 1,
+      "category": 4,
+      "body": "The garment that monitors your heart rate, adjusts its thermal properties in response to your body temperature, or changes colour based on your biometric data is no longer a concept. It is a product category, and it is growing.\n\nSmart textiles — fabrics with integrated electronic or responsive components — have been in development since the 1990s. The early iterations were bulky and impractical: sensors sewn into garments, wires running through seams, battery packs clipped to waistbands. The technology has matured significantly. Conductive yarns, printed electronics, and washable sensors have made it possible to integrate function into fabric without compromising the wearability of the garment.\n\nMyzone and Hexoskin produce performance monitoring garments for the fitness market. Athos embedded electromyography sensors into compression wear that could map muscle activation in real time — a tool used by professional sports teams for training optimisation. The data generated by these garments is increasingly valuable not just to athletes but to the sports science and medical research communities.\n\nThe fashion applications are developing more slowly, partly because the use cases are less obvious and partly because fashion consumers have different tolerances for the visible presence of technology in their clothing. Several designers have experimented with thermochromic inks — dyes that change colour in response to temperature — as a fashion element. Studio XO and Iris van Herpen have both produced garments with integrated lighting and reactive materials.\n\nThe convergence point between performance wear and fashion is where the most interesting commercial activity is happening. Lululemon's investment in fabric innovation and its acquisition of Mirror — the connected fitness platform — signal a strategic bet that the future of activewear is data-enabled. The garment becomes a sensor. The sensor becomes a service.\n\nFor the broader fashion industry, the challenge is integrating technical function without compromising the aesthetic and tactile experience that defines fashion as distinct from equipment. The brands that solve that problem first will own a significant market.",
+      "excerpt": "Smart textiles have moved from concept to product category. From biometric monitoring to thermochromic inks, the convergence of performance wear and fashion technology is producing the industry's most interesting commercial experiments.",
+      "is_premium": true,
+      "is_published": true,
+      "published_at": "2026-03-13T09:00:00Z",
+      "created_at": "2026-03-13T09:00:00Z",
+      "updated_at": "2026-03-13T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 11,
+    "fields": {
+      "title": "The Athlete as Influencer: Social Media and the New Economics of Sports Fashion",
+      "slug": "athlete-influencer-social-media-fashion",
+      "author": 1,
+      "category": 3,
+      "body": "The commercial value of a professional athlete was once calculated primarily through prize money, tournament performance, and the audience reach of the sport itself. That calculation has changed. In the social media era, an athlete's commercial value is increasingly determined by their follower count, their engagement rate, and their ability to translate sporting fame into cultural influence across platforms that have nothing to do with sport.\n\nThe numbers are significant. Cristiano Ronaldo has more Instagram followers than any other account on the platform — over 600 million as of 2024. His posts generate engagement rates that dwarf those of traditional celebrity endorsers. Fashion brands that previously would have paid for a magazine cover now pay for an Instagram story.\n\nThe shift has changed the structure of sports endorsement deals. Brands are no longer simply paying athletes to wear their products in competition. They are paying for access to the athlete's audience, their personal brand, and their ability to generate authentic-feeling content across multiple platforms. The distinction between a sportswear endorsement and a fashion collaboration has largely dissolved.\n\nNetflix has accelerated this dynamic. Drive to Survive and Break Point created narrative frameworks around athletes that turned competition results into story arcs and personal rivalries into ongoing drama. Athletes who might previously have been known only to hardcore fans became protagonists in stories that casual viewers followed with the same investment they bring to scripted television.\n\nThe commercial beneficiaries have been the athletes, the streaming platforms, and the fashion brands that moved quickly to align themselves with the newly famous. The casualties have been traditional sports media — broadcasters and print publications whose audiences have fragmented — and, arguably, the sports themselves, whose results now compete for attention with the off-field content that the same athletes produce.\n\nFor fashion brands, the athlete-influencer represents a particular kind of value: credibility through physical achievement, aspiration through lifestyle, and reach through social platforms. Managing those relationships — and the risks that come with tying brand identity to individual personalities — is one of the more complex challenges in contemporary fashion marketing.",
+      "excerpt": "Netflix documentaries and social media have transformed professional athletes into cultural influencers. For fashion brands, the athlete-influencer offers credibility, aspiration and reach — at the cost of significant reputational dependency.",
+      "is_premium": false,
+      "is_published": true,
+      "published_at": "2026-03-14T09:00:00Z",
+      "created_at": "2026-03-14T09:00:00Z",
+      "updated_at": "2026-03-14T09:00:00Z"
+    }
+  },
+  {
+    "model": "articles.article",
+    "pk": 12,
+    "fields": {
+      "title": "On Running, Roger Federer and the Making of a Fashion Sportswear Brand",
+      "slug": "on-running-federer-fashion-sportswear",
+      "author": 1,
+      "category": 4,
+      "body": "On Running was founded in Zurich in 2010 by Olivier Bernhard, David Allemann, and Caspar Coppetti. The company's first product was a running shoe built around a cushioning system called CloudTec — a sole construction using hollow pods designed to compress on impact and stiffen for propulsion. The shoe was unusual looking. It found an audience among serious runners who valued its performance properties. For the first few years, On was a functional running brand with a distinctive aesthetic and a loyal niche following.\n\nThe trajectory changed when Roger Federer became an investor and brand partner in 2019. Federer was not merely an endorser — he took an equity stake in the company and became involved in product development, most visibly on the Roger Pro tennis shoe that bears his name. His involvement brought On into conversations about luxury, craft, and the relationship between elite sport and fashion that the brand had not previously occupied.\n\nOn went public on the New York Stock Exchange in September 2021, raising approximately $746 million in its IPO at a valuation of around $7.3 billion. The float was one of the most successful in the sportswear sector in recent years and reflected investor confidence in the brand's ability to grow beyond running into a broader performance lifestyle category.\n\nThe brand's aesthetic — clean, Swiss, technically credible — has proved well suited to the fashion-sport crossover moment that followed the pandemic. Its shoes appear on the feet of architects, designers, and tech workers as often as runners. Zendaya's partnership with On, announced in 2023, explicitly positioned the brand at the intersection of performance and fashion culture.\n\nOn's approach to materials innovation has kept pace with its commercial ambitions. The Cyclon subscription shoe — a running shoe designed to be returned to On at end of life and remade from the same castor bean-based foam — is one of the more credible circular economy experiments in the footwear industry. It is genuinely technically interesting and commercially limited: the subscription model has not yet scaled to a size that makes a material difference to the brand's overall footprint.\n\nWhat On has built is a case study in how a functional performance brand can acquire fashion credibility without abandoning its technical roots. The Federer partnership was the catalyst. The IPO was the confirmation. The Zendaya campaign was the statement of intent.",
+      "excerpt": "On Running's trajectory from Zurich running brand to global fashion-sport crossover story — via Roger Federer's equity stake, a $7.3 billion IPO and a Zendaya partnership — is one of the more instructive case studies in contemporary brand building.",
+      "is_premium": true,
+      "is_published": true,
+      "published_at": "2026-03-15T09:00:00Z",
+      "created_at": "2026-03-15T09:00:00Z",
+      "updated_at": "2026-03-15T09:00:00Z"
+    }
+  }
+]
