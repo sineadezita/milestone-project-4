@@ -516,7 +516,7 @@ footer {
 .event-card {
     background: var(--white);
     border: 1px solid var(--border);
-    padding: 24px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
     height: 100%;
