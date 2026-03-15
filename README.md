@@ -3,7 +3,7 @@ A full stack editorial platform covering the intersection of technology and fash
 
 ---
 
-## Table of Contentss
+## Table of Contents
 - Project Purpose & Value
 - Target Audience
 - UX Design
@@ -21,14 +21,14 @@ A full stack editorial platform covering the intersection of technology and fash
 
 ## Project Purpose & Value
 
-Atelier Zero One fills a gap in the European market for focused, professional reposrting on technology as it applies to the fashion industry. Topics include AI-driven personalisations, wearable technology, sustainable supply chains, augmented reality retain, and digital fashion.
+Atelier Zero One fills a gap in the European market for focused, professional reporting on technology as it applies to the fashion industry. Topics include AI-driven personalisation, wearable technology, sustainable supply chains, augmented reality retail, and digital fashion.
 
 ** Value to users:**
 - Visitors can freely discover articles and assess whether the publication suits them
 - Registered users get a personalised reading list they can engage via comments
 - Premium subscribers unlock full access to in-depth reports and analysis
 
-The purpose of the site is immediately evident on arrival: a clean editorial homepage communicates the publication'tration and focus, and the premium content lock clearly signals why registration and subscription add value.
+The purpose of the site is immediately evident on arrival: a clean editorial homepage communicates the publication's direction and focus, and the premium content lock clearly signals why registration and subscription add value.
 
 ---
 
@@ -94,6 +94,15 @@ See User Stories for the full set of user stories used to plan this project.
 --- 
 
 ## Apps & Structure 
+| App | Purpose |
+|-----|---------|
+| 'home' | Homepage view and featured content |
+| 'articles' | Articles and category models,  views and template |
+| 'events' | Event models, views and templates |
+| 'accounts | User profiles, reading list, saved events |
+| 'subscriptions' | Stripe checkout, webhook, subscription model |
+| 'comments' | Comment model, add/edit/delete views |
+| 'audit_log' | Security logging for user actions |
 
 ## Data Models
 
@@ -104,23 +113,53 @@ Add ERD
 |----------|------------|
 | Backend framework | Django |
 | Language | Python |
-| Database | To be updated |
+| Database | SQLite (development) / PostgreSQL (production) |
 | Authentication | Django Allauth |
 | Payments | Stripe Checkout + Webhooks |
 | Frontend framework | Bootstrap 5 |
-| JavaScript | To be updated |
+| JavaScript | Vanilla JS for flash message dismissal and delete confirmation |
 | Image hosting | Cloudinary |
 | Deployment | Heroku |
 | Static files | Whitenoise |
 | Version control | Git & GitHub |
 
+
 ---
 
 ## Setup & Installation
 
+1. Clone the repository: 'git clone https://github.com/sineadezita/milestone-project-4'
+2. Create a virtual environment: 'python -m venv .venv'
+3. Activate it: 'source .venv/bin/activate'
+4. Install dependencies: 'pip install -r requirements.txt'
+5. Create 'env.py' in the root directory with the required environment variables (see below)
+6. Run migrations: 'python3 manage.py migrate'
+7. Create a superuser: 'python3 manage.py createsuperuser'
+8. Run the server: 'python3 manage.py runserver'
+
+## Environment Variables
+
+Create an 'env.py' file in the root directory:
+'''python
+import os
+
+os.environ['SECRET_KEY"] = 'your-secret-key'
+os.environ['DEBUG"] = 'True'
+os.environ['STRIPE_PUBLIC_KEY'] = 'your-strip-public-key'
+os.environ['STRIPE_SECRET_KEY'] = 'your-stripe-secret-key'
+os.environ['STRIPE_PRICE_ID'] = 'your-stripe-price-id'
+os.environ['STRIPE_WEBHOOK_SECRET'] = 'your-stripe-webhook-secret'
+os.environ['CLOUDINARY_CLOUD_NAME'] = 'your-cloud-name'
+os.environ['CLOUDINARY_API_KEY'] = 'your-api-key'
+os.environ['CLOUDINARY_API_SECRET'] = 'your-api-secret'
+
 ## Stripe Integration
 
 This project uses **Stripe Checkout in test mode only**. No real payments are processed.
+
+| Payment successful | /subscriptions/succes/ | Welcome to Premium |
+| Payment cancelled | /subscriptions/cancel/ | Subscription cancelled |
+| Already subscribed | /subscriptions/ | You are already a premium member |
 
 ### Subscription Flow
 
@@ -134,7 +173,10 @@ This project uses **Stripe Checkout in test mode only**. No real payments are pr
 
 | Outcome | Page shown | Message |
 |---------|------------|---------|
-| Payment successful | 
+| Payment successful | '/subscriptions/success/' | Welcome to Atelier Zero One Premium! |
+| Payment cancelled | '/subscriptions/cancel/' | Subscription cancelled. |
+| Already subscribed | '/subscriptions/' | You are already a premium member |
+| Checkout error | '/subscriptions/' | Something went wrong: [errir detail] |
 
 ### Stripe Test Card
 
@@ -158,6 +200,22 @@ Deployed to **Heroku**.
 
 ### Libraries & Dependencies
 
+| Package | Version | Purpose |
+|---------|---------|---------|
+| Django | 6.0.2 | Core web framework |
+| django-allauth | 65.14.3 | User authentication and registration |
+| stripe | 14.4.0 | Payment processing and webhooks |
+| cloudinary | 1.44.1 | Image hosting and delivery |
+| django-cloudinary-storage | 0.3.0 | Cloudinary integration for Django |
+| dj-databse-url | 3.1.2 | Database URL configuration for Heroku |
+| psycopg2-binary | 2.9.11 | PostgreSQL database adapter |
+| gunicorn | 25.1.0 | WSGI server for Heroku deployment |
+| whitenoise | 6.12.0 | Static file serving in production |
+| requests | 2.32.5 | HTTP library |
+| asgiref | 3.11.1 | Django async support |
+| sqlparse | 0.5.5 | SQL query formatting |
+
+
 ### Code Attribution
 
 ### Design Inspiration
@@ -168,6 +226,11 @@ Deployed to **Heroku**.
 
 | Feature | Description |
 |---------|-------------|
+| Category filtering | Filter articles by category on a list page |
+| Search | Full text search across multiple articles |
+| Author profiles | Public author pages with article history |
+| Newsletter | Email newsletter for premium subscribers |
+| Data journalism | Sentiment analysis features |
 
 
 
