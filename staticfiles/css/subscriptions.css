@@ -1,0 +1,113 @@
+/* Subscription Page */
+.subscription-card {
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 48px;
+}
+
+.subscription-header {
+    background: var(--black);
+    padding: 48px 40px;
+    text-align: center;
+}
+
+.subscription-eyebrow {
+    font-size: 9.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey-400);
+    margin-bottom: 12px;
+}
+
+.subscription-title {
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.subscription-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+}
+
+.price-amount {
+    font-size: 48px;
+    font-weight: 200;
+    color: var(--white);
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 14px;
+    color: var(--grey-400);
+}
+
+.subscription-features {
+    padding: 36px 40px;
+    border-bottom: 1px solid var(--border);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--grey-800);
+}
+
+.feature-item:last-child { border-bottom: none; }
+
+.feature-icon {
+    color: var(--gold);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.subscription-btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.subscription-small {
+    font-size: 11px;
+    color: var(--grey-400);
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+/* Active Subscription */
+.subscription-active {
+    border: 1px solid var(--gold);
+    padding: 48px 40px;
+    text-align: center;
+    background: var(--gold-light);
+    margin-bottom: 48px;
+}
+
+.subscription-active-icon {
+    font-size: 32px;
+    color: var(--gold);
+    margin-bottom: 16px;
+}
+
+.subscription-active-title {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.subscription-active-text {
+    font-size: 14px;
+    color: var(--grey-600);
+    margin-bottom: 24px;
+}

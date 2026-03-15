@@ -170,7 +170,7 @@ STRIPE_PRICE_ID = os.environ.get('STRIPE_PRICE_ID', '')
 
 # Whitenoise
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Database Heroku PostgreSQL
