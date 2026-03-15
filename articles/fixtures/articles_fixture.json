@@ -1,5 +1,42 @@
 [
   {
+    "model": "articles.category",
+    "pk": 1,
+    "fields": {
+      "name": "Digital Fashion",
+      "slug": "digital-fashion",
+      "description": "Virtual garments, 3D design and the digitalisation of the fashion industry."
+    }
+  },
+  {
+    "model": "articles.category",
+    "pk": 2,
+    "fields": {
+      "name": "Sustainability",
+      "slug": "sustainability",
+      "description": "Environmental impact, circular fashion and sustainable innovation."
+    }
+  },
+  {
+    "model": "articles.category",
+    "pk": 3,
+    "fields": {
+      "name": "AI & Machine Learning",
+      "slug": "ai-machine-learning",
+      "description": "Artificial intelligence and machine learning applications in fashion."
+    }
+  },
+  {
+    "model": "articles.category",
+    "pk": 4,
+    "fields": {
+      "name": "Wearable Technology",
+      "slug": "wearable-technology",
+      "description": "Smart textiles, connected garments and wearable devices."
+    }
+  },
+
+  {
     "model": "articles.article",
     "pk": 1,
     "fields": {
