@@ -36,28 +36,16 @@ endblock %} {% block content %}
         </div>
       </div>
 
-      <!-- Premium Lock -->
-      {% if article.is_premium %} {% with sub=request.user.subscription %} {% if
-      not sub or sub.status != 'active' %}
+      {% if article.is_premium and not can_read %}
       <div class="premium-lock">
-        <div class="premium-lock-inner">
-          <div class="premium-lock-icon">🔒</div>
-          <h3>Premium Content</h3>
-          <p>
-            Subscribe to Atelier Zero One Premium to read this article in full.
-          </p>
-          <a
-            href="{% url 'subscriptions:subscription_page' %}"
-            class="btn-dark-custom"
-            >Subscribe — €9.99/month</a
-          >
-        </div>
+         <div class="premium-lock-inner">
+             <div class="premium-lock-icon">🔒</div>
+             <h3>Premium Content</h3>
+             <p>Subscribe to Atelier Zero One Premium to read this article in full.</p>
+             <a href="{% url 'subscriptions:subscription_page' %}" class="btn-dark-custom">Subscribe — €9.99/month</a>
+         </div>
       </div>
       {% else %}
-      <!-- Article Body -->
-      <div class="article-body">{{ article.body|linebreaks }}</div>
-      {% endif %} {% endwith %} {% else %}
-      <!-- Article Body for non-premium -->
       <div class="article-body">{{ article.body|linebreaks }}</div>
       {% endif %}
 

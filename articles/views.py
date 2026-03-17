@@ -26,10 +26,23 @@ def article_list(request):
     return render(request, 'articles/article_list.html', context)
 
 def article_detail(request, slug):
-    """ A view to show an individual article """
-    article = get_object_or_404(Article, slug=slug, is_published=True)
+   """ A view to show an individual article """
+   article = get_object_or_404(Article, slug=slug, is_published=True)
 
-    context = {
-        'article': article,
-    }
-    return render(request, 'articles/article_detail.html', context)
+   can_read = True  # non-premium articles always readable
+
+   if article.is_premium:
+       can_read = False  # default to locked
+       if request.user.is_authenticated:
+           try:
+               subscription = request.user.subscription
+               if subscription.status == 'active':
+                   can_read = True
+           except Exception:
+               can_read = False
+
+   context = {
+       'article': article,
+       'can_read': can_read,
+   }
+   return render(request, 'articles/article_detail.html', context)
