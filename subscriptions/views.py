@@ -102,6 +102,8 @@ def webhook(request):
             ) 
         except User.DoesNotExist:
             pass
+        except Exception as e:
+            return HttpResponse(status=500)
     
     # Handle subscription cancelled
     elif event['type'] in ['customer.subscription.aborted', 'customer.subscription.deleted']:
