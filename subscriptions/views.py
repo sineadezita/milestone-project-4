@@ -72,7 +72,6 @@ def subscription_cancel(request):
 
 @csrf_exempt
 def webhook(request):
-    """ Manage Stripe webhook events """
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
     webhook_secret = settings.STRIPE_WEBHOOK_SECRET
@@ -85,13 +84,12 @@ def webhook(request):
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
-    
-    # Handle subscription activated
-    if event['type'] == 'customer.subscription.created':
-        subscription_data = event['data']['object']
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
         user_id = session.get('client_reference_id')
         subscription_id = session.get('subscription')
-        customer_id = session.get['customer']
+        customer_id = session.get('customer')
 
         if user_id:
             try:
@@ -103,24 +101,23 @@ def webhook(request):
                         'stripe_subscription_id': subscription_id,
                         'status': 'active'
                     }
-                ) 
+                )
                 log_action(user, 'subscribe', 'Subscription created', request)
             except User.DoesNotExist:
                 pass
-    
-    # Handle subscription cancelled
-    elif event['type'] in ['customer.subscription.deleted']:
+
+    elif event['type'] == 'customer.subscription.deleted':
         subscription_data = event['data']['object']
         customer_id = subscription_data['customer']
         try:
             customer = stripe.Customer.retrieve(customer_id)
             email = customer.get('email')
             if email:
-                user = User.objects.get(email=email).first()
+                user = User.objects.filter(email=email).first()
                 if user:
                     Subscription.objects.filter(user=user).update(status='cancelled')
                     log_action(user, 'cancel', 'Subscription cancelled via webhook')
-            except Exception:
-                pass
+        except Exception:
+            pass
 
     return HttpResponse(status=200)
