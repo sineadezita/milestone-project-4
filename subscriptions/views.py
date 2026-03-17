@@ -43,6 +43,7 @@ def create_checkout_session(request):
             success_url=request.build_absolute_uri('/subscriptions/success/'),
             cancel_url=request.build_absolute_uri('/subscriptions/cancel'),
             customer_email=request.user.email,
+            client_reference_id=request.user.id,
         )
         return redirect(checkout_session.url)
     except Exception as e:
@@ -88,33 +89,38 @@ def webhook(request):
     # Handle subscription activated
     if event['type'] == 'customer.subscription.created':
         subscription_data = event['data']['object']
-        customer_id = subscription_data['customer']
-        try:
-            customer = stripe.Customer.retrieve(customer_id)
-            user = User.objects.get(email=customer['email'])
-            Subscription.objects.update_or_create(
-                user=user,
-                defaults={
-                    'stripe_customer_id': customer_id,
-                    'stripe_subscription_id': subscription_data['id'],
-                    'status': 'active'
-                }
-            ) 
-        except User.DoesNotExist:
-            pass
-        except Exception as e:
-            return HttpResponse(status=500)
+        user_id = session.get('client_reference_id')
+        subscription_id = session.get('subscription')
+        customer_id = session.get['customer']
+
+        if user_id:
+            try:
+                user = User.objects.get(id=user_id)
+                Subscription.objects.update_or_create(
+                    user=user,
+                    defaults={
+                        'stripe_customer_id': customer_id,
+                        'stripe_subscription_id': subscription_id,
+                        'status': 'active'
+                    }
+                ) 
+                log_action(user, 'subscribe', 'Subscription created', request)
+            except User.DoesNotExist:
+                pass
     
     # Handle subscription cancelled
-    elif event['type'] in ['customer.subscription.aborted', 'customer.subscription.deleted']:
+    elif event['type'] in ['customer.subscription.deleted']:
         subscription_data = event['data']['object']
         customer_id = subscription_data['customer']
         try:
             customer = stripe.Customer.retrieve(customer_id)
-            user = User.objects.get(email=customer['email'])
-            Subscription.objects.filter(user=user).update(status='cancelled')
-            log_action(user, 'cancel', 'Subscription cancelled via webhook')
-        except User.DoesNotExist:
-            pass
+            email = customer.get('email')
+            if email:
+                user = User.objects.get(email=email).first()
+                if user:
+                    Subscription.objects.filter(user=user).update(status='cancelled')
+                    log_action(user, 'cancel', 'Subscription cancelled via webhook')
+            except Exception:
+                pass
 
     return HttpResponse(status=200)
