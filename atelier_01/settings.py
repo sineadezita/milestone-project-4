@@ -163,7 +163,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Stripe
 
-STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_VIEW', '')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET', '')
 STRIPE_PRICE_ID = os.environ.get('STRIPE_PRICE_ID', '')
