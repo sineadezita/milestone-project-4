@@ -39,7 +39,7 @@ def create_checkout_session(request):
                'price': settings.STRIPE_PRICE_ID,
                'quantity': 1,
            }],
-           success_url=request.build_absolute_uri('/subscriptions/success/'),
+           success_url=request.build_absolute_uri('/subscriptions/success/?session_id={CHECKOUT_SESSION_ID}'),
            cancel_url=request.build_absolute_uri('/subscriptions/cancel/'),
            customer_email=request.user.email,
            client_reference_id=str(request.user.id),
@@ -53,10 +53,23 @@ def create_checkout_session(request):
 
 @login_required
 def subscription_success(request):
-    """ Manage successful subscriptions """
-    log_action(request.user, 'subscribe', 'Subscription created', request)
-    messages.success(request, 'Welcome to Atelier Zero One Premium!')
-    return render(request, 'subscriptions/success.html')
+   session_id = request.GET.get('session_id')
+   if session_id:
+       try:
+           session = stripe.checkout.Session.retrieve(session_id)
+           Subscription.objects.update_or_create(
+               user=request.user,
+               defaults={
+                   'stripe_customer_id': session.customer or '',
+                   'stripe_subscription_id': session.subscription or '',
+                   'status': 'active',
+               }
+           )
+           log_action(request.user, 'subscribe', 'Subscription created', request)
+       except Exception:
+           pass
+   messages.success(request, 'Welcome to Atelier Zero One Premium!')
+   return render(request, 'subscriptions/success.html')
     
 
 
