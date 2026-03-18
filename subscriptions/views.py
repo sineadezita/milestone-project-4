@@ -31,24 +31,23 @@ def subscription_page(request):
 
 @login_required
 def create_checkout_session(request):
-    """ Create a Stripe checkout session """
-    try:
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price': settings.STRIPE_PRICE_ID,
-                'quantity': 1,
-            }],
-            mode='subscription',
-            success_url=request.build_absolute_uri('/subscriptions/success/'),
-            cancel_url=request.build_absolute_uri('/subscriptions/cancel'),
-            customer_email=request.user.email,
-            client_reference_id=request.user.id,
-        )
-        return redirect(checkout_session.url)
-    except Exception as e:
-        messages.error(request, f'Something went wrong: {str(e)}')
-        return redirect('subscriptions:subscription_page')
+   try:
+       checkout_session = stripe.checkout.Session.create(
+           mode='subscription',
+           payment_method_types=['card'],
+           line_items=[{
+               'price': settings.STRIPE_PRICE_ID,
+               'quantity': 1,
+           }],
+           success_url=request.build_absolute_uri('/subscriptions/success/'),
+           cancel_url=request.build_absolute_uri('/subscriptions/cancel/'),
+           customer_email=request.user.email,
+           client_reference_id=str(request.user.id),
+       )
+       return redirect(checkout_session.url)
+   except Exception as e:
+       messages.error(request, f'Something went wrong: {str(e)}')
+       return redirect('subscriptions:subscription_page')
     
 
 
@@ -72,52 +71,68 @@ def subscription_cancel(request):
 
 @csrf_exempt
 def webhook(request):
-    payload = request.body
-    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
-    webhook_secret = settings.STRIPE_WEBHOOK_SECRET
+   payload = request.body
+   sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+   webhook_secret = settings.STRIPE_WEBHOOK_SECRET
 
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, webhook_secret
-        )
-    except ValueError:
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError:
-        return HttpResponse(status=400)
+   try:
+       event = stripe.Webhook.construct_event(payload, sig_header, webhook_secret)
+   except ValueError:
+       return HttpResponse(status=400)
+   except stripe.error.SignatureVerificationError:
+       return HttpResponse(status=400)
 
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-        user_id = session.get('client_reference_id')
-        subscription_id = session.get('subscription')
-        customer_id = session.get('customer')
+   event_type = event['type']
+   obj = event['data']['object']
 
-        if user_id:
-            try:
-                user = User.objects.get(id=user_id)
-                Subscription.objects.update_or_create(
-                    user=user,
-                    defaults={
-                        'stripe_customer_id': customer_id,
-                        'stripe_subscription_id': subscription_id,
-                        'status': 'active'
-                    }
-                )
-                log_action(user, 'subscribe', 'Subscription created', request)
-            except User.DoesNotExist:
-                pass
+   if event_type == 'checkout.session.completed':
+       user_id = obj.get('client_reference_id')
+       subscription_id = obj.get('subscription')
+       customer_id = obj.get('customer')
+       email = obj.get('customer_email')
 
-    elif event['type'] == 'customer.subscription.deleted':
-        subscription_data = event['data']['object']
-        customer_id = subscription_data['customer']
-        try:
-            customer = stripe.Customer.retrieve(customer_id)
-            email = customer.get('email')
-            if email:
-                user = User.objects.filter(email=email).first()
-                if user:
-                    Subscription.objects.filter(user=user).update(status='cancelled')
-                    log_action(user, 'cancel', 'Subscription cancelled via webhook')
-        except Exception:
-            pass
+       user = None
 
-    return HttpResponse(status=200)
+       if user_id:
+           user = User.objects.filter(id=user_id).first()
+
+       if not user and email:
+           user = User.objects.filter(email=email).first()
+
+       if user:
+           Subscription.objects.update_or_create(
+               user=user,
+               defaults={
+                   'stripe_customer_id': customer_id or '',
+                   'stripe_subscription_id': subscription_id or '',
+                   'status': 'active',
+               }
+           )
+           log_action(user, 'subscribe', 'Subscription created', request)
+
+   elif event_type == 'invoice.paid':
+       customer_id = obj.get('customer')
+       subscription_id = obj.get('subscription')
+
+       sub = (
+           Subscription.objects.filter(stripe_customer_id=customer_id).first()
+           or Subscription.objects.filter(stripe_subscription_id=subscription_id).first()
+       )
+
+       if sub:
+           sub.status = 'active'
+           sub.save()
+
+   elif event_type == 'customer.subscription.deleted':
+       subscription_id = obj.get('id')
+       customer_id = obj.get('customer')
+
+       Subscription.objects.filter(
+           stripe_subscription_id=subscription_id
+       ).update(status='cancelled')
+
+       Subscription.objects.filter(
+           stripe_customer_id=customer_id
+       ).update(status='cancelled')
+
+   return HttpResponse(status=200)
