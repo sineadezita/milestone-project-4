@@ -254,6 +254,3 @@ This project is deployed to **Heroku** using the following steps:
 | Author profiles | Public author pages with article history |
 | Newsletter | Email newsletter for premium subscribers |
 | Data journalism | Sentiment analysis features |
-
-
-
