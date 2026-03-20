@@ -194,7 +194,30 @@ Full testing documentation is in ADD FILE HERE.
 
 ## Deployment
 
-Deployed to **Heroku**.
+This project is deployed to **Heroku** using the following steps:
+
+1. Open Heroku website and create an account or login.
+2. Create a new Heroku app
+3. Add **Heroku Postgre** add-on (Essential-0)
+4. Set all environment variables in Heroku Config Vars:
+    - 'SECRET_KEY'
+    - 'STRIPE_PUBLIC_KEY'
+    - 'STRIPE_SECRET_KEY'
+    - 'STRIPE_PRICE_ID'
+    - 'STRIPE_WEBHOOK_SECRET'
+    - 'CLOUDINARY_CLOUD_NAME'
+    - 'CLOUDINARY_API_KEY'
+    - 'CLOUDINARY_API_SECRET'
+5. Create a 'Procfile': 'web: gunicorn atelier_01.wsgi:application'
+6. Create 'runtime.txt': ''python-3.12.8'
+7. Push to GitHub and deploy via Heroku dashboard
+8. Run migrations: 'heroku run python manage.py migrate --app your-app-name'
+9. Create superuser: 'heroku run python manage.py createsuperuser --app your-app-name'
+10. Run collectstatic: 'heroku run python manage.py collectstatic --app your-app-name'
+
+**Live URL:**
+**GitHub:**
+
 
 ## Credit & Attribution
 
