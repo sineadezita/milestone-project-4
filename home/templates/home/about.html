@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About | Atelier Zero One{% endblock %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+
+    <div class="section-label-row">
+        <span class="section-label">About</span>
+        <span class="section-rule"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+
+            <h1 class="article-detail-title mb-4">About Atelier Zero One</h1>
+
+            <div class="article-body">
+                <p>Atelier Zero One is an independent editorial platform covering the intersection of technology and fashion across Europe. We publish in-depth analysis, industry reports and origin journalism on the forces reshaping one of the new of the woeld's most significant industries.</p>
+
+                <p>Our focus spans artificial intelligence in design and forecasting, wearable technology, sustainable supply chains, digital fashion, and the growing influence of sport and culture on fashion's commercial landscape.</p>
+
+                <p>We believe the fashion industry's relationship with technology is one of the defining stories of the next decade - and that it deserves rigorous, independent reporting.</p>
+
+                <h2 style="font-size: 22px; font-weight: 300; margin: 32px 0 16px;">Editorial Approach</h2>
+
+                <p>Atelier Zero One publishes two tiers of content. Free articles are available to all visitors. Premium subscribers access our full archive of in-depth reports amd analysis, published weekly.</p>
+
+                <p>We do not accept sponsored content or advertising. Our editorial independence is absolute.</p>
+
+                <h2 style="font-size: 22px; font-weight: 300; margin: 32px 0 16px;">Premium Membership</h2>
+
+                <p>A Premium Membership gives you unlimited access to all articles on teh platform for €9.99 per month. Cancel anytime.</p>
+
+                <a href="{% url 'subscriptions:subscription_page' %}" class="btn-dark-custom mt-3 d-inline-block">Go Premium</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="article-sidebar">
+                <div class="sidebar-hd mb-3">Quick Links</div>
+                <div class="sidebar-meta-item">
+                    <a href="{% url 'articles:article_list' %}" class="section-more">All Articles</a>
+                </div>
+                <div class="sidebar-meta-item">
+                    <a href="{% url 'events:event_list' %}" class="section-more">Upcoming Events</a>
+                </div>
+                <div class="sidebar-meta-item">
+                    <a href="{% url 'subscriptions:subscription_page' %}" class="section-more">Go Premium</a>
+                </div>
+                {% if not user.is_authenticated %}
+                <div class="sidebar-meta-item">
+                    <a href="{% url 'account_signup' %}" class="section-more">Register</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

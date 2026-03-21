@@ -14,3 +14,7 @@ def index(request):
         'upcoming_events': upcoming_events,
     }
     return render(request, 'home/index.html', context)
+
+
+def about(request):
+    return render(request, 'home/about.html')

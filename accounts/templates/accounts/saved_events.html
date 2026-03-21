@@ -17,8 +17,8 @@
 
     <div class="row g-4">
         {% for event in saved_events %}
-        <div class="col-md-6 col-lg-4">
-            <div class="event card">
+        <div class="col-md-6 col-lg-4 d-flex">
+            <div class="event-card">
                 <div class="event-date-block">
                     <div class="event-date-box">
                         <span class="event-day">{{ event.event_date|date:"d" }}</span>
@@ -35,7 +35,7 @@
                     <a href="{% url 'accounts:save_event' event.id %}" class="btn-outline-dark-custom">
                         <i class="bi-bi-bookmark-fill"></i> remove
                     </a>
-                    <a href="{% url 'events:event_detail' event.slug %}" class="event.link">View Details</a>
+                    <a href="{% url 'events:event_detail' event.slug %}" class="event-link">View Details</a>
                 </div>
             </div>
         </div>
