@@ -418,7 +418,8 @@ footer {
 
 .card-img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 220px;
+    aspect-ratio: unset;
     background: var(--grey-100);
     margin-bottom: 16px;
     display: flex;
@@ -429,7 +430,15 @@ footer {
     letter-spacing: 1px;
     position: relative;
     overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .premium-badge {

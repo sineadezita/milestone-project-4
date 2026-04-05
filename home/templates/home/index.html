@@ -89,6 +89,9 @@
             <div class="col-md-6 col-lg-4">
                 <article class="article-card">
                     <div class="card-img">
+                        {% if article.image %}
+                        <img src="{{ article.image.url }}" alt="{{ article.title }}" class="card-img-top">
+                        {% endif %}
                         {% if article.is_premium %}<span class="premium-badge">Premium</span>{% endif %}
                     </div>
                     <div class="card-cat">{{ article.category }}</div>
