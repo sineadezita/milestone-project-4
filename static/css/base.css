@@ -664,3 +664,74 @@ footer {
 }
 
 .footer-social-link:hover { color: var(--black); }
+
+/* Responsive Media Queries */
+
+/* Tablet (768px and below) */
+@media(max-width: 768px) {
+    /* Masthead */
+    .masthead-centre { display: none; }
+    .masthead-top { padding: 14px 0; }
+    .brand { font-size: 18px; letter-spacing: 3px; }
+
+    /* Navigation */
+    .primary-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+    }
+    .nav-links li a {
+        padding: 10px 12px;
+        font-size: 10px;
+    }
+    .nav-search input { width: 100px; }
+
+    /* Section labels */
+    .section-label-row { gap: 8px; }
+
+    /* Article cards */
+    .card-img { height: 180px; }
+
+    /* Event cards */
+    .event-card { padding: 20px; }
+
+    /* Footer */
+    footer { padding: 36px 0 0; }
+}
+
+/* Mobile (576px and below) */
+@media (max-width: 576px) {
+
+    /* Masthead */
+    .brand { font-size: 15px; letter-spacing: 2px; }
+    .masthead-actions { gap: 6px; }
+    .btn-dark-custom, .btn-outline-dark-custom, .btn-premium-nav {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+
+    /* Navigation */
+    .nav-links li a {
+        padding: 8px 10px;
+        font-size: 9.5px;
+        letter-spacing: 1px;
+    }
+    .nav-search { display: none; }
+
+    /* Ticker */
+    .ticker-itme { padding: 0 24px; font-size: 9.5px; }
+
+    /* Cards */
+    .card-img { height: 200px; }
+    .card-title {font-size: 15px; }
+
+    /* Events */
+    .event-card { padding: 16px; }
+    .event-title { font-size: 14px; }
+
+    /* Premium lock */
+    .premium-lock-inner { padding: 24px 16px; }
+    .profile-avatar { width:  60px; height: 60px; font-size: 24px; }
+}
