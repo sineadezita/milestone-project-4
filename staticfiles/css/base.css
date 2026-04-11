@@ -404,7 +404,7 @@ footer {
 .section-more:hover { color: var(--black); }
 
 /* Article Cards */
-.article-section { padding: 52px 0; }
+.article-section { padding: 52px 0 52px; }
 
 .article-card {
     display: flex;
