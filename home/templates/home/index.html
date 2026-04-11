@@ -46,7 +46,7 @@
 
             <div class="hero-sidebar">
                 <div class="sidebar-hd">Latest Articles</div>
-                {% for article in featured_articles|slice:"1:4" %}
+                {% for article in latest_articles|slice:"1:5" %}
                 <div class="sidebar-item">
                     {% if article.image %}
                         <img src="{{ article.image.url }}" alt="{{ article.title }}" class="sidebar-thumb">
