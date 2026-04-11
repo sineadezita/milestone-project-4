@@ -702,36 +702,61 @@ footer {
 }
 
 /* Mobile (576px and below) */
-@media (max-width: 576px) {
 
-    /* Masthead */
-    .brand { font-size: 15px; letter-spacing: 2px; }
-    .masthead-actions { gap: 6px; }
-    .btn-dark-custom, .btn-outline-dark-custom, .btn-premium-nav {
-        padding: 6px 12px;
-        font-size: 10px;
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+ }
+ 
+ .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--black);
+    transition: all 0.3s;
+ }
+ 
+ @media (max-width: 767px) {
+    .hamburger {
+        display: flex;
     }
-
-    /* Navigation */
+ 
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        border-top: 1px solid var(--border);
+        padding: 8px 0;
+    }
+ 
+    .nav-links.open {
+        display: flex;
+    }
+ 
     .nav-links li a {
-        padding: 8px 10px;
-        font-size: 9.5px;
-        letter-spacing: 1px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 12px;
     }
-    .nav-search { display: none; }
-
-    /* Ticker */
-    .ticker-itme { padding: 0 24px; font-size: 9.5px; }
-
-    /* Cards */
-    .card-img { height: 200px; }
-    .card-title {font-size: 15px; }
-
-    /* Events */
-    .event-card { padding: 16px; }
-    .event-title { font-size: 14px; }
-
-    /* Premium lock */
-    .premium-lock-inner { padding: 24px 16px; }
-    .profile-avatar { width:  60px; height: 60px; font-size: 24px; }
-}
+ 
+    .primary-nav {
+        flex-wrap: wrap;
+    }
+ 
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+ 
+    .ticker {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+    }
+ }
+ 

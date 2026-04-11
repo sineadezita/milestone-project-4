@@ -1,53 +1,74 @@
 {% load static %}
-
 <header class="masthead">
-    <div class="container">
-        <div class="masthead-top">
-            <!-- Brand -->
-            <a href="{% url 'home' %}" class="brand">
-                <strong>Atelier</strong> Zero One
-            </a>
+   <div class="container">
+       <div class="masthead-top">
+           <!-- Brand -->
+           <a href="{% url 'home' %}" class="brand">
+               <strong>Atelier</strong> Zero One
+           </a>
 
-            <!-- Centre date and tagline -->
-            <div class="masthead-centre d-none d-md-block">
-                <span class="masthead-date" id="masthead-date"></span>
-                <p class="masthead-tagline">Fashion Technology Across Europe</p>
-            </div>
-        
-            <!-- Auth buttons -->
-            <div class="masthead-actions">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'account_logout' %}" class="btn-dark-custom">Log Out</a>
-                {% else %}
-                <a href="{% url 'account_login' %}" class="btn-dark-custom">Log In</a>
-                <a href="{% url 'account_signup' %}" class="btn-dark-custom">Register</a>
-                {% endif %}
-            </div>
-        </div>
-        <!-- Primary navigation -->
-        <nav class="primary-nav" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'articles:article_list' %}">Articles</a></li>
-                <li><a href="{% url 'events:event_list' %}">Events</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-            </ul>
+           <!-- Centre date and tagline -->
+           <div class="masthead-centre d-none d-md-block">
+               <span class="masthead-date" id="masthead-date"></span>
+               <p class="masthead-tagline">Fashion Technology Across Europe</p>
+           </div>
 
-            <!-- Search form -->
-            <div class="nav-right">
-                <form method="GET" action="#" class="nav-search" role="search">
-                    <input
-                        type="text"
-                        name="q"
-                        placeholder="Search articles &amp; events..."
-                        aria-label="Search"
+           <!-- Auth buttons + hamburger -->
+           <div class="masthead-actions">
+               {% if user.is_authenticated %}
+               <a href="{% url 'account_logout' %}" class="btn-dark-custom d-none d-md-inline-block">Log Out</a>
+               {% else %}
+               <a href="{% url 'account_login' %}" class="btn-dark-custom d-none d-md-inline-block">Log In</a>
+               <a href="{% url 'account_signup' %}" class="btn-dark-custom d-none d-md-inline-block">Register</a>
+               {% endif %}
+
+               <!-- Hamburger button - mobile only -->
+               <button class="hamburger d-md-none" id="hamburger" aria-label="Toggle menu">
+                   <span></span>
+                   <span></span>
+                   <span></span>
+               </button>
+           </div>
+       </div>
+
+       <!-- Primary navigation -->
+       <nav class="primary-nav" aria-label="Main navigation">
+           <ul class="nav-links" id="nav-links">
+               <li><a href="{% url 'home' %}">Home</a></li>
+               <li><a href="{% url 'articles:article_list' %}">Articles</a></li>
+               <li><a href="{% url 'events:event_list' %}">Events</a></li>
+               <li><a href="{% url 'about' %}">About</a></li>
+
+               <!-- Mobile only auth links -->
+               <li class="d-md-none">
+                   {% if user.is_authenticated %}
+                   <a href="{% url 'account_logout' %}">Log Out</a>
+                   {% else %}
+                   <a href="{% url 'account_login' %}">Log In</a>
+                   {% endif %}
+               </li>
+               {% if not user.is_authenticated %}
+               <li class="d-md-none">
+                   <a href="{% url 'account_signup' %}">Register</a>
+               </li>
+               {% endif %}
+           </ul>
+
+           <!-- Search form - desktop only -->
+           <div class="nav-right d-none d-md-flex">
+               <form method="GET" action="{% url 'articles:article_list' %}" class="nav-search" role="search">
+                   <input
+                       type="text"
+                       name="q"
+                       placeholder="Search articles &amp; events..."
+                       aria-label="Search"
                     >
-                    <button type="submit" class="search-btn" aria-label="Submit search">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </form>
-            </div>
-        </nav>
-    </div>
-</header>
 
+                   <button type="submit" class="search-btn" aria-label="Submit search">
+                       <i class="bi bi-search"></i>
+                   </button>
+               </form>
+           </div>
+       </nav>
+   </div>
+</header>
