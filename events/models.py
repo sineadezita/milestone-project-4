@@ -3,6 +3,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
+
 class Event(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
@@ -20,4 +21,3 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
-    

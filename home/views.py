@@ -5,11 +5,13 @@ from subscriptions.models import Subscription
 
 
 def index(request):
-   """ A view to return the index page """
+   """A view to return the index page"""
    featured_articles = Article.objects.filter(
-       is_published=True).order_by('-updated_at')[:3]
+       is_published=True
+   ).order_by('-updated_at')[:5]
    latest_articles = Article.objects.filter(
-       is_published=True).order_by('-created_at')[:5]
+       is_published=True
+   ).order_by('-created_at')[:3]
    upcoming_events = Event.objects.all().order_by('event_date')[:3]
 
    subscription = None
@@ -29,4 +31,5 @@ def index(request):
 
 
 def about(request):
+   """A view to return the about page"""
    return render(request, 'home/about.html')

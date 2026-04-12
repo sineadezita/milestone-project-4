@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class AuditLog(models.Model):
     ACTION_CHOICES = [
         ('login', 'User Login'),
@@ -26,6 +27,6 @@ class AuditLog(models.Model):
 
     class Meta:
         ordering = ['-timestamp']
-    
+
     def __str__(self):
         return f"{self.user} - {self.action} - {self.timestamp:%d %b %Y %H:%M}"

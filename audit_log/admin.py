@@ -3,6 +3,7 @@ from .models import AuditLog
 
 # Register your models here.
 
+
 @admin.register(AuditLog)
 class AuditLogAdmin(admin.ModelAdmin):
     list_display = ['user', 'action', 'detail', 'ip_address', 'timestamp']

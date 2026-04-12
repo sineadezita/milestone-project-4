@@ -8,6 +8,7 @@ from audit_log.utils import log_action
 
 # Create your views here.
 
+
 @login_required
 def profile(request):
     """ A view to show the user's profile """
@@ -16,6 +17,7 @@ def profile(request):
         'profile': profile,
     }
     return render(request, 'accounts/profile.html', context)
+
 
 @login_required
 def reading_list(request):
@@ -27,6 +29,7 @@ def reading_list(request):
     }
     return render(request, 'accounts/reading_list.html', context)
 
+
 @login_required
 def save_article(request, article_id):
     """ Save or unsave an article to the user's reading list """
@@ -36,13 +39,19 @@ def save_article(request, article_id):
 
     if article in profile.saved_articles.all():
         profile.saved_articles.remove(article)
-        messages.success(request, f'Removed {article.title} from your reading list')
+        messages.success(
+            request,
+            f'Removed {article.title} from your reading list')
     else:
         profile.saved_articles.add(article)
-        log_action(request.user, 'save_article', f'Saved: {article.title}', request)
-        messages.success(request, f'Added {article.title} to your reading list')
-
+        log_action(
+            request.user,
+            'save_article', f'Saved: {article.title}', request)
+        messages.success(
+            request,
+            f'Added {article.title} to your reading list')
     return redirect('articles:article_list')
+
 
 @login_required
 def save_event(request, event_id):
@@ -53,13 +62,18 @@ def save_event(request, event_id):
 
     if event in profile.saved_events.all():
         profile.saved_events.remove(event)
-        messages.success(request, f'Removed {event.title} from your saved events')
+        messages.success(
+            request,
+            f'Removed {event.title} from your saved events')
     else:
         profile.saved_events.add(event)
-        log_action(request.user, 'save_event', f'Saved: {event.title}', request)
+        log_action(
+            request.user,
+            'save_event', f'Saved: {event.title}', request)
         messages.success(request, f'Added {event.title} to your saved events')
 
     return redirect('events:event_list')
+
 
 @login_required
 def saved_events(request):

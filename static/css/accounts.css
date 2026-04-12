@@ -1,5 +1,5 @@
 /* Profile Card */
-profile-card {
+.profile-card {
     border: 1px solid var(--border);
     padding: 32px 24px;
     text-align: center;
@@ -16,7 +16,7 @@ profile-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 300;
+    font-size: 28px;
     margin: 0 auto 16px;
 }
 

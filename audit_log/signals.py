@@ -2,6 +2,7 @@ from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver
 from .models import AuditLog
 
+
 @receiver(user_logged_in)
 def login(sender, request, user, **kwargs):
     ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -10,7 +11,6 @@ def login(sender, request, user, **kwargs):
     else:
         ip_address = request.META.get('REMOTE_ADDR')
 
-    
     AuditLog.objects.create(
         user=user,
         action='login',
