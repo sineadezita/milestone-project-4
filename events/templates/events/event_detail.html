@@ -4,7 +4,7 @@
 {% block title %}{{ event.title }} | Atelier Zero One{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container mt-4 mb-5">
     <div class="section-label-row">
         {% if event.image %}
         <img src="{{ event.image.url }}" alt="{{event.title }}" class="event-detail-img mb-4">
@@ -31,7 +31,7 @@
             <p class="hero-excerpt">{{ event.description }}</p>
 
             {% if event.website_url %}
-            <a href="{{ event.website_url }}" target="_black" class="btn-dark-custom mt-4">Visit Website</a>
+            <a href="{{ event.website_url }}" target="_blank" class="btn-dark-custom mt-4">Visit Website</a>
             {% endif %}
 
             {% if user.is_authenticated %}

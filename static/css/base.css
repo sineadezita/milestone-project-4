@@ -759,4 +759,9 @@ footer {
         margin-left: calc(-50vw + 50%);
     }
  }
+
+ /* Auth pages spacing */
+ .login, .signup, .logout {
+    padding: 60px 0;
+ }
  
