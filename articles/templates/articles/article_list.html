@@ -17,7 +17,7 @@
 </div>
 
 <!-- Articles Grid -->
-<section class="articles-section">
+<section class="articles-section pb-5">
     <div class="container">
         <div class="row g-4">
             {% for article in articles %}
@@ -38,7 +38,7 @@
                     <div class="card-lock">Premium content | subscribe to read in full</div>
                     {% endif %}
                     <div class="card-footer-row">
-                        <div class="card-maeta">
+                        <div class="card-meta">
                             <span>{{ article.author }}</span> . {{ article.published_at|date:"d M Y" }}
                         </div>
                         <a href="{% url 'articles:article_detail' article.slug %}" class="card-link">Read</a>

@@ -33,10 +33,10 @@
         <div class="col-md-3 mb-4">
             <div class="footer-col-title">Categories</div>
             <ul class="footer-links">
-                <li><a href="#">AI & Machine Learning</a></li>
-                <li><a href="#">Wearable Technology</a></li>
-                <li><a href="#">Sustainability</a></li>
-                <li><a href="#">Digital Fashion</a></li>
+                <li><a href="{% url 'articles:article_list' %}?category=ai-machine-learning">AI & Machine Learning</a></li>
+                <li><a href="{% url 'articles:article_list' %}?category=wearable-technology">Wearable Technology</a></li>
+                <li><a href="{% url 'articles:article_list' %}?category=sustainability">Sustainability</a></li>
+                <li><a href="{% url 'articles:article_list' %}?category=digital-fashion">Digital Fashion</a></li>
             </ul>
         </div>
 
@@ -46,7 +46,7 @@
             <ul class="footer-links">
                 <li><a href="{% url 'subscriptions:subscription_page' %}">Go Premium</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="{% url 'accounts:profile' %}">Profile</a></li>
                     <li><a href="{% url 'account_logout' %}">Log Out</a></li>
                 {% else %}
                     <li><a href="{% url 'account_signup' %}">Register</a></li>
