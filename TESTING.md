@@ -228,9 +228,8 @@ All Python files were validated using [CI Python Linter](https://pep8ci.herokuap
 ## Lighthouse Testing
 | Page | Performance | Accessibility | Best Practices | SEO |
 |------|-------------|---------------|----------------|-----|
-| Homepage | | | | |
-| Articles | | | | |
-| Subscription | | | | |
+| Homepage | See screenshot | 96 | 58 | 100 |
+
 
 ---
 
